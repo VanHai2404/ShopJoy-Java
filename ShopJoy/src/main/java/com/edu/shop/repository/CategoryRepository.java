@@ -8,5 +8,5 @@ import com.edu.shop.domain.Category;
 
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long>{
-
+   
 }

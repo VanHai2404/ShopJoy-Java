@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Category implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int categoryId;
+	private Long categoryId;
 	
 	@Column(name = "category_name",length = 100,columnDefinition = "nvarchar(100) not null")
 	private String name;
