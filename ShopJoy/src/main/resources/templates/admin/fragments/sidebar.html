@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout">
+
+    <head>
+
+    </head>
+
+
+<body>
+
+   <!-- ======= Sidebar ======= -->
+   <aside id="sidebar" class="sidebar"  th:fragment="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="fa fa-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+     
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa fa-journal-text"></i><span>PRODUCT</span><i class="fa fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="pages-product.html">
+              <i class="fa fa-circle"></i><span>Edit PRODUCT</span>
+            </a>
+          </li>
+          <li>
+            <a href="pages-product.html">
+              <i class="fa fa-circle"></i><span>List PRODUCT</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{admin/categories/add}">
+              <i class="fa fa-circle"></i><span>Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="forms-validation.html">
+              <i class="fa fa-circle"></i><span>Form Validation</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa fa-layout-text-window-reverse"></i><span>CUSTOMERS</span><i class="fa fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="page-cutomers.html">
+              <i class="fa fa-circle"></i><span>Edit CUSTOMERS</span>
+            </a>
+          </li>
+          <li>
+            <a href="tables-data.html">
+              <i class="fa fa-circle"></i><span>List CUSTOMERS</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#charts-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa fa-bar-chart"></i><span>POST</span><i class="fa fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="page-post.html">
+              <i class="fa fa-circle"></i><span>New POST</span>
+            </a>
+          </li>
+          <li>
+            <a href="page-post.html">
+              <i class="fa fa-circle"></i><span> List POST</span>
+            </a>
+          </li>
+          <li>
+            <a href="page-post.html">
+              <i class="fa fa-circle"></i><span>Statistics POST</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Charts Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+          <i class="fa fa-gem"></i><span>ORDER</span><i class="fa fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="page-bill.html">
+              <i class="fa fa-circle"></i><span>Orders waiting for confirmation</span>
+            </a>
+          </li>
+          <li>
+            <a href="page-bill.html">
+              <i class="fa fa-circle"></i><span>Bill</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="fa fa-circle"></i><span>Boxicons</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Icons Nav -->
+
+      <li class="nav-heading">Pages</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="fa fa-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="fa fa-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="fa fa-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-blank.html">
+          <i class="fa fa-file-earmark"></i>
+          <span>Blank</span>
+        </a>
+      </li><!-- End Blank Page Nav -->
+
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+    
+</body>
+</html>
