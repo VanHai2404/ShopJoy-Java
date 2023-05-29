@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/dashboardLayout.html}">
+   
+
+<head>
+
+ <base href="/">
+</head>
+
+<body>
+    
+
+    <!-- #main -->
+
+    <main id="main" class="main" layout:fragment="content">
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Category Tabs</h5>
+    
+            <!-- Default Tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
+                      role="tab" aria-controls="contact" aria-selected="false">New Category</button>
+                  </li>
+    
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                  role="tab" aria-controls="profile" aria-selected="false">List Category</button>
+              </li>
+           
+            </ul>
+            <div class="tab-content pt-2" id="myTabContent">
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <form class="row g-3 needs-validation pt-2" novalidate>
+                      <div class="col-12">
+                        <div class="form-outline">
+                            <label for="validationCustom03" class="form-label">Category Id</label>
+                          <input type="text" class="form-control"  required />
+                          <div class="invalid-feedback">Category Id Not Null</div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-outline">
+                            <label for="validationCustom05" class="form-label">Name</label>
+                          <input type="text" class="form-control"  required />   
+                          <div class="invalid-feedback">Name Id Not Null</div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                          <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                          <div class="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                      </div>
+                      <div class="col-12">
+                       
+                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                      </div>
+                    </form>
+                    <script>
+                      // Example starter JavaScript for disabling form submissions if there are invalid fields
+                      (() => {
+                        'use strict';
+        
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        const forms = document.querySelectorAll('.needs-validation');
+        
+                        // Loop over them and prevent submission
+                        Array.prototype.slice.call(forms).forEach((form) => {
+                          form.addEventListener('submit', (event) => {
+                            if (!form.checkValidity()) {
+                              event.preventDefault();
+                              event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                          }, false);
+                        });
+                      })();
+                    </script>
+                  </div>
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="container mt-5">
+                  <div class="row mt-3">
+                    <div class="col-lg-2">
+                      <table>Page Size</table>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>size</option>
+                        <option value="1">5</option>
+                        <option value="2">10</option>
+                        <option value="3">15</option>
+                      </select>
+                    </div>
+                   
+                  </div>
+                  <table class="table align-middle mb-0 bg-white mt-2">
+                    <thead class="bg-light">
+                      <tr>
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      
+                        <td>
+                          <p class="fw-normal mb-1">Software engineer</p>
+    
+                        </td>
+                        <td>
+                          <p class="fw-normal mb-1">543656</p>
+    
+                        </td>
+    
+                        <td>
+                          <button type="button" class="btn  btn-sm btn-rounded">
+                            <i class="fa-solid fa-info"></i>
+                          </button>
+                          <button type="button" class="btn  btn-sm btn-rounded">
+                            <i class="fa-solid fa-pen"></i>
+                          </button>
+                          <button type="button" class="btn  btn-sm btn-rounded">
+                            <i class="fa-sharp fa-solid fa-trash"></i>
+                          </button>
+    
+                        </td>
+                      </tr>
+    
+                    </tbody>
+                  </table>
+                  <div class="row">
+                   
+                    <div class=" col-md-3 pt-2 ">
+                      <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                        <ul class="pagination">
+                          <li class="paginate_button page-item previous" id="dataTable_previous">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                              class="page-link">Previous</a>
+                          </li>
+                          <li class="paginate_button page-item ">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                          </li>
+                          <li class="paginate_button page-item ">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                          </li>
+                          <li class="paginate_button page-item next" id="dataTable_next">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+    
+                </div>
+              </div>
+    
+           
+    
+    
+            </div>
+          </div>
+        </div>
+        </div><!-- End Default Tabs -->
+    
+        </div>
+        </div>
+    
+    
+    
+      </main><!-- End #main -->
+
+
+    
+</body>
+</html>
