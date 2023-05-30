@@ -1,5 +1,4 @@
 package com.edu.shop.domain;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -19,5 +18,7 @@ public class Account {
 	private String username;
 	@Column(length = 20,nullable = false)
 	private String password;
+	
+	
 
 }
