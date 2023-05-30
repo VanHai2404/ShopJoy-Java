@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/dashboardLayout.html}">
+   
+
+<head>
+
+ <base href="/">
+</head>
+
+<body>
+    
+
+    <!-- #main -->
+
+    <main id="main" class="main" layout:fragment="content">
+
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Products Lists</h5>
+              <div class="container mt-5">
+                  <div class="row mt-3">
+                    <div class="col-lg-2">
+                      <table>Page Size</table>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>size</option>
+                        <option value="1">5</option>
+                        <option value="2">10</option>
+                        <option value="3">15</option>
+                      </select>
+                    </div>
+                   
+                        <div class="col-lg-4 offset-6">
+                         <form action="">
+                      <div class="form-outline">
+                        <table>Search</table>
+                        <input type="search" id="form1" class="form-control" placeholder="Type Search" aria-label="Search" onchange="this.sumbis()"/>
+                      </div>
+                       </form>
+                    </div>  
+                   
+                
+                  </div>
+                  <div class="row d-flex justify-content-center">
+                     <ul style="font-size: 50px;">
+                      <i class="fa fa-file-excel"></i>
+                      <i class="fa-sharp fa-solid fa-file-pdf"></i>
+                      <i class="fa-solid fa-file-word"></i>
+                     </ul>
+                  </div>
+                  <table class="table align-middle mb-0 bg-white mt-2">
+                    <thead class="bg-light">
+                      <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Discount</th>
+                        <th>Status</th>
+                        <th>Category</th>
+                        <th>&nbsp;</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt=""
+                              style="width: 45px; height: 45px" class="rounded-circle" />
+    
+                          </div>
+                        </td>
+                        <td>
+                          <p class="fw-normal mb-1">Software engineer</p>
+    
+                        </td>
+                        <td>
+                          <p class="fw-normal mb-1">543656</p>
+    
+                        </td>
+                        <td>
+                          <p class="fw-normal mb-1">7%</p>
+    
+                        </td>
+                        <td>oke</td>
+                        <td>900</td>
+    
+                        <td>
+                          <button type="button" class="btn  btn-sm btn-rounded">
+                            <i class="fa-solid fa-info"></i>
+                          </button>
+                          <button type="button" class="btn  btn-sm btn-rounded">
+                            <i class="fa-solid fa-pen"></i>
+                          </button>
+                          <button type="button" class="btn  btn-sm btn-rounded">
+                            <i class="fa-sharp fa-solid fa-trash"></i>
+                          </button>
+    
+                        </td>
+                      </tr>
+    
+                    </tbody>
+                  </table>
+                  <div class="row">
+                    <div class="col-md-9 pt-2">
+                      <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">
+                        Showing 21 to 30 of 57 entries
+                      </div>
+                    </div>
+                    <div class=" col-md-3 pt-2 ">
+                      <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+                        <ul class="pagination">
+                          <li class="paginate_button page-item previous" id="dataTable_previous">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+                              class="page-link">Previous</a>
+                          </li>
+                          <li class="paginate_button page-item ">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                          </li>
+                          <li class="paginate_button page-item ">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                          </li>
+                          <li class="paginate_button page-item next" id="dataTable_next">
+                            <a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+      
+                </div>
+      
+              
+            </div>
+          </div>
+        
+    
+    
+    
+      </main><!-- End #main -->
+
+
+    
+</body>
+</html>
