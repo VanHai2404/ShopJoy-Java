@@ -38,6 +38,18 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> findAll(Sort sort) {
 		return categoryRepository.findAll(sort);
 	}
+	
+
+	@Override
+	public List<Category> findByNameContaining(String Name) {
+		return categoryRepository.findByNameContaining(Name);
+	}
+
+	
+	@Override
+	public Page<Category> findByNameContaining(String Name, Pageable pageable) {
+		return categoryRepository.findByNameContaining(Name, pageable);
+	}
 
 	@Override
 	public void flush() {
