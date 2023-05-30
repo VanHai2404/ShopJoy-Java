@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/dashboardLayout.html}">
+   
+
+<head>
+
+ <base href="/">
+</head>
+
+<body>
+    
+
+    <!-- #main -->
+
+    <main id="main" class="main" layout:fragment="content">
+
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Product Tabs</h5>
+      
+              <!-- Default Tabs -->
+          
+        
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                  <!-- Multi Columns Form -->
+                  <form class="row g-3 needs-validation" novalidate>
+                    <div class="row g-3">
+                      <div class="col-md-6">
+                        <div class="col pt-4">
+                          <label for="inputEmail5" class="form-label">Product ID</label>
+                          <input type="email" class="form-control" id="inputEmail5" required>
+                          <div class="invalid-feedback">ID Not Null</div>
+                        </div>
+                        <div class="col pt-4">
+                          <label for="inputEmail5" class="form-label">Name</label>
+                          <input type="email" class="form-control" id="inputEmail5" required>
+                          <div class="invalid-feedback">Name Not Null</div>
+                        </div>
+                        <div class="col pt-4">
+                          <label for="inputEmail5" class="form-label">Quantity</label>
+                          <input type="email" class="form-control" id="inputEmail5" required>
+                          <div class="invalid-feedback">Quantity Not Null</div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="pr">
+                          <img src="/img/product/SANPHAM2.jpeg" alt="" height="250px" width="200px">
+                        </div>
+                        <label for="inputEmail5" class="form-label">lmage File</label> <br>
+                        <input type="file" required>
+      
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Unit Price</span>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
+                          placeholder="Unit Price" required>
+                        <span class="input-group-text">.VND</span>
+                        <div class="invalid-feedback">Unit Price Not Null</div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Discoun</span>
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                        <span class="input-group-text">.$</span>
+                        <div class="invalid-feedback">Discoun Not Null</div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputState" class="form-label">Category</label>
+                      <select id="inputState" class="form-select" required>
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputState" class="form-label">Status</label>
+                      <select id="inputState" class="form-select" required>
+                        <option selected>Out of Stock</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="col-md-2">
+                      <label for="inputZip" class="form-label">Zip</label>
+                      <input type="text" class="form-control" id="inputZip" required>
+                    </div>
+      
+                    <div class="col-12">
+                      <div class="form-floating mb-3">
+                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
+                          style="height: 100px;" required></textarea>
+                        <label for="floatingTextarea">Comments</label>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                        <label class="form-check-label" for="gridCheck">
+                          Check me out
+                        </label>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                      <button type="submit" class="btn btn-primary">Delete</button>
+                      <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                  </form><!-- End Multi Columns Form -->
+                  <script>
+                    // Example starter JavaScript for disabling form submissions if there are invalid fields
+                    (() => {
+                      'use strict';
+      
+                      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                      const forms = document.querySelectorAll('.needs-validation');
+      
+                      // Loop over them and prevent submission
+                      Array.prototype.slice.call(forms).forEach((form) => {
+                        form.addEventListener('submit', (event) => {
+                          if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                          }
+                          form.classList.add('was-validated');
+                        }, false);
+                      });
+                    })();
+                  </script>
+                </div>
+      
+  
+            </div>
+          </div>
+       
+      
+      
+    
+    
+    
+      </main><!-- End #main -->
+
+
+    
+</body>
+</html>
