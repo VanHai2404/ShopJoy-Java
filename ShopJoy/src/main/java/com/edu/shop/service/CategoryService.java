@@ -44,7 +44,7 @@ public interface CategoryService {
 
 	Page<Category> findAll(Pageable pageable);
 
-	void flush();
+	void flush(); 
 
 	List<Category> findAll(Sort sort);
 
