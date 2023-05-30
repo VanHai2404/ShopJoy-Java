@@ -44,12 +44,16 @@ public interface CategoryService {
 
 	Page<Category> findAll(Pageable pageable);
 
-	void flush();
+	void flush(); 
 
 	List<Category> findAll(Sort sort);
 
 	<S extends Category> List<S> saveAll(Iterable<S> entities);
 
 	<S extends Category> S save(S entity);
+
+	List<Category> findByNameContaining(String Name);
+
+	Page<Category> findByNameContaining(String Name, Pageable pageable);
 
 }

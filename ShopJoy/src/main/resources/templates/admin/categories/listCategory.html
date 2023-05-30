@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
+
+<head>
+
+<base href="/">
+</head>
+
+<body>
+
+
+	<!-- #main -->
+
+	<main id="main" class="main" layout:fragment="content">
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Category List</h5>
+				<div class="container mt-5">
+					<div >
+						<form th:action="@{/admin/categories/form}" >
+							<button type="submit" class="btn btn-outline-info"
+								style="font-size: 15px; font-family: 700;">
+								Add New Category <i class="fa fa-newspaper"></i>
+							</button>
+
+						</form>
+					</div>
+
+
+					<div class="row" th:if="${!categoryPage.hasContent()}">
+						<div class="col">
+							<div class="alert alert-danger">
+								<strong>No Categories Found </strong>
+							</div>
+
+						</div>
+
+					</div>
+					<div class="row mt-3">
+						<form action="">
+							<div class="col-lg-2">
+								<table>Page Size
+								</table>
+								<select class="form-select" aria-label="Default select example"
+									name="size" id="size" onchange="this.form.submit()">
+									<option th:selected="${categoryPage.size==5}" value="5">5</option>
+									<option th:selected="${categoryPage.size==10}" value="10">10</option>
+									<option th:selected="${categoryPage.size==15}" value="15">15</option>
+									<option th:selected="${categoryPage.size==20}" value="20">20</option>
+
+								</select>
+							</div>
+
+
+						</form>
+					</div>
+
+
+					<table class="table align-middle mb-0 bg-white mt-2"
+						th:if="${categoryPage.hasContent()}">
+						<thead class="bg-light">
+							<tr>
+								<th>#</th>
+								<th>ID</th>
+								<th>Name</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="category ,iStat : ${categoryPage.content}">
+
+								<td>
+									<p class="fw-normal mb-1" th:text="${category.categoryId}"></p>
+
+								</td>
+								<td>
+									<p class="fw-normal mb-1" th:text="${category.name}"></p>
+
+								</td>
+
+								<td><a
+									th:href="@{'/admin/categories/view'+ ${category.categoryId}}"
+									class="btn  btn-sm btn-rounded" style="text-decoration: none;">
+										<i class="fa-solid fa-info"></i>
+								</a> <a
+									th:href="@{'/admin/categories/edit/'+${category.categoryId}}"
+									class="btn  btn-sm btn-rounded" style="text-decoration: none;">
+										<i class="fa-solid fa-pen"></i>
+								</a> <a
+									th:href="@{'/admin/categories/delete/'+${category.categoryId}}"
+									class="btn  btn-sm btn-rounded" style="text-decoration: none;">
+										<i class="fa-sharp fa-solid fa-trash"></i>
+								</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+					<div class="row">
+
+						<div class=" col-md-3 pt-2 ">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="dataTable_paginate" th:if="${categoryPage.totalPages > 0}">
+								<ul class="pagination">
+									<li
+										th:class="${categoryPage.first} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/categories/list/paginated(size=${categoryPage.size},page=${0})}">First</a>
+									</li>
+									<li
+										th:class="${categoryPage.first} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/categories/list/paginated(size=${categoryPage.size},page=${categoryPage.number -1})}">Pre</a>
+									</li>
+									<li
+										th:class="${categoryPage.last} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/categories/list/paginated(size=${categoryPage.size},page=${categoryPage.number} +1)}">Next</a>
+									</li>
+									<li
+										th:class="${categoryPage.last} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/categories/list/paginated(size=${categoryPage.size},page=${categoryPage.totalPages}-1)}">Last</a>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+	</main>
+	<!-- End #main -->
+
+
+
+</body>
+</html>
