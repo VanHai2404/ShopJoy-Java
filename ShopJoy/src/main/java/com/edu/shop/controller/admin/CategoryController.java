@@ -107,7 +107,7 @@ public class CategoryController {
 	                else if (start == 1)
 	                    end = start + 5;
 	            }
-
+       
 	            List<Integer> pageNumbers = IntStream.rangeClosed(start, end)
 	                    .boxed()
 	                    .collect(Collectors.toList());
