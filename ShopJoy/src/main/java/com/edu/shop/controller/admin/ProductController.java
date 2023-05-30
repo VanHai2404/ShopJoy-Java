@@ -10,6 +10,7 @@ public class ProductController {
 	
 	@GetMapping("")
 	public String add() {
+		
 		return "admin/products/pages-product";
         
 	}
