@@ -40,6 +40,14 @@ public class AccountServiceImpl  implements AccountService{
 		
 	}
 	
+	
+
+	@Override
+	public Page<Account> findByUsernameContaining(String username, Pageable pageable) {
+		return accountReposttory.findByUsernameContaining(username, pageable);
+	}
+
+
 
 	@Override
 	public <S extends Account> S save(S entity) {

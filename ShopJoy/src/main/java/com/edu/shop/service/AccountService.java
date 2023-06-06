@@ -58,4 +58,6 @@ public interface AccountService {
 
 	Account login(String username, String password);
 
+	Page<Account> findByUsernameContaining(String username, Pageable pageable);
+
 }
