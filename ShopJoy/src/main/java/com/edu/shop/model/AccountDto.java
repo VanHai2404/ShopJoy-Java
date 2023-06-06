@@ -14,21 +14,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccountDto {
-	@NotEmpty
-	private String username;
-	@NotEmpty
-	private String fullname;
-	@NotEmpty
-	private String password;
-	@NotEmpty
-	private String email;
-	
-	private MultipartFile ImageFile;
-	private String image;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date birthday;
+    @NotEmpty
+    private String username;
+    @NotEmpty
+    private String fullname;
+    @NotEmpty
+    private String password;
+    @NotEmpty
+    private String email;
 
-	private String phone;
-	private String gender;
-
+    private MultipartFile ImageFile;
+    private String image;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
+    private String phone;
+    private String gender;
 }
