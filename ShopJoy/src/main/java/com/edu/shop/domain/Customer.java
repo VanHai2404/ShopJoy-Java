@@ -25,18 +25,35 @@ import lombok.NoArgsConstructor;
 public class Customer  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private int customerId;
+	
+	@Column(length = 50)
+	private String username;
+	
 	@Column(columnDefinition = "nvarchar(50) not null")
-	private String name;
+	private String fullname;
+	
 	@Column(columnDefinition = "nvarchar(100) not null")
 	private String email;
-	@Column( length = 20, nullable = false)
+	
+	@Column(length = 50)
+	private String gender;
+	
+	@Column( length = 200, nullable = false)
 	private String password;
+	
 	@Column(length = 20)
 	private String phone;
+	
+	@Column(length = 200)
+	private String image;
+	
+	@Temporal(TemporalType.DATE)
+	private Date dateOfBirth;
+	
 	@Temporal(TemporalType.DATE)
 	private Date registeredDate;
+	
 	@Column(nullable = false)
 	private short status;
 	
