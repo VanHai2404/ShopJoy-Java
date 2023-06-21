@@ -11,7 +11,8 @@ public class CartItem {
 	private int productId;
 	private String name;
 	private int quantity;
-	private double unitPrice;
+	private double untiPrice;
+	private String size;
 	private String image;
 	
 

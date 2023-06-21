@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery.FetchableFluentQuery;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.edu.shop.domain.Product;
 import com.edu.shop.repository.ProductRepository;
@@ -23,6 +24,18 @@ public class ProductServiceIml implements ProductService{
 
 	@Override
 	public <S extends Product> S save(S entity) {
+		
+		Optional<Product> optExist =findById(entity.getProductId());
+		System.out.println("Người Tim :" +optExist);
+		
+		if(!optExist.isEmpty()) {
+			if(StringUtils.isEmpty(entity.getImage())) {
+				System.out.println("Update Lấy Lại image----------");
+				entity.setImage(optExist.get().getImage());
+			}
+			entity.setEnterdDate(optExist.get().getEnterdDate());
+		}
+		
 		return productRepository.save(entity);
 	}
 	
@@ -38,6 +51,14 @@ public class ProductServiceIml implements ProductService{
 	@Override
 	public Page<Product> findByNameContaining(String Name, Pageable pageable) {
 		return productRepository.findByNameContaining(Name, pageable);
+	}
+	
+
+
+
+	@Override
+	public List<Product> findByCategory_CategoryIdIn(List<Long> categoryIds) {
+		return productRepository.findByCategory_CategoryIdIn(categoryIds);
 	}
 
 
