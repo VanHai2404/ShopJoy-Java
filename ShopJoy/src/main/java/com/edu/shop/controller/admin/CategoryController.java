@@ -58,7 +58,7 @@ public class CategoryController {
 	  categoryService.deleteById(categoryId);
 	  model.addAttribute("message","Category is delete");
 	  
-		return new ModelAndView("forward:/admin/categories/list");
+		return new ModelAndView("forward:/admin/categories/list/paginated");
 
 	}
 	

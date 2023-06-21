@@ -3,6 +3,7 @@ package com.edu.shop.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,7 +18,7 @@ import com.edu.shop.service.CategoryService;
 @Service
 public class CategoryServiceImpl implements CategoryService{
 
-	
+	@Autowired
 	CategoryRepository categoryRepository;
 
 	public CategoryServiceImpl(CategoryRepository categoryRepository) {

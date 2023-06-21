@@ -2,6 +2,7 @@ package com.edu.shop.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.edu.shop.domain.Customer;
+import com.edu.shop.domain.Order;
 import com.edu.shop.repository.CustomerRepository;
 import com.edu.shop.service.CustomerService;
 
@@ -26,22 +28,42 @@ public class CustomerServiceImpl implements CustomerService {
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
+      
+	@Override
+	public Optional<Customer> findByUsername(String username) {
+		return customerRepository.findByUsername(username);
+	}
+
+
+	@Override
+	public Optional<Customer> findByEmail(String email) {
+		return customerRepository.findByEmail(email);
+	}
+	
+
+
+	@Override
+	public List<Order> findAllOrdersByUsername(String username) {
+		return customerRepository.findAllOrdersByUsername(username);
+	}
+
 
 	@Override
 	public Page<Customer> findByUsernameContaining(String username, Pageable pageable) {
 		return customerRepository.findByUsernameContaining(username, pageable);
 	}
-//	Optional<Account> optExist =findById(entity.getUsername());
-//	if(optExist.isEmpty()) {
-//		if(StringUtils.isEmpty(entity.getPassword())) {
-//			entity.setPassword(optExist.get().getPassword());
-//		}else {
-//			entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));					
-//		}
-//	}else {
-//		entity.setPassword(bCryptPasswordEncoder.encode(entity.getPassword()));
-//           
-//	}
+	
+	
+	@Override
+	public Customer login(String username, String password) {
+		 Optional<Customer> optExist = customerRepository.findByEmail(username);
+		if(optExist.isPresent()&& bCryptPasswordEncoder.matches(password, optExist.get().getPassword())) {		
+			optExist.get().setPassword("");
+			return optExist.get();
+		}
+		
+		return null;
+	}
 
 	@Override
 	public <S extends Customer> S save(S entity) {
