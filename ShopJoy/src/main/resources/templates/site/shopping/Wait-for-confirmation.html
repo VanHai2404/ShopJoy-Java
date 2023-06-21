@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{site/HomeLayout.html}">
+
+
+<head>
+
+
+</head>
+
+<body>
+  <main layout:fragment="content">
+
+
+
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuItems = document.querySelectorAll(".menu-Order a");
+        const tabPanes = document.querySelectorAll(".tab-pane");
+
+        menuItems.forEach(function (item) {
+          item.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Lấy tab được chọn từ thuộc tính data-tab
+            const selectedTab = this.getAttribute("data-tab");
+
+            // Ẩn tất cả các tab-pane
+            tabPanes.forEach(function (pane) {
+              pane.classList.remove("active");
+            });
+
+            // Hiển thị tab-pane được chọn
+            document.getElementById(selectedTab).classList.add("active");
+          });
+        });
+      });
+
+    </script>
+
+    <div class="container">
+      <div class="menu-Order">
+        <a class="OFl2GI " title="Tất cả" data-tab="tat-ca" th:href="@{user/purchase/}">
+          <span class="_20hgQK">Tất cả</span>
+        </a>
+       <a class="OFl2GI" title="Chờ thanh toán" data-tab="cho-thanh-toan" href="#" onclick="navigateToURL('user/purchase/0'); return false;">
+        <span class="_20hgQK">Chờ thanh toán</span>
+        </a>
+
+        <a class="OFl2GI" title="Đang giao" data-tab="dang-giao" href="#" onclick="navigateToURL('user/purchase/1'); return false;"  >
+          <span class="_20hgQK">Đang giao</span>
+        </a>
+        <a class="OFl2GI" title="Hoàn thành" data-tab="hoan-thanh" onclick="navigateToURL('user/purchase/3'); return false;" >
+          <span class="_20hgQK">Hoàn thành</span>
+        </a>
+        <a class="OFl2GI" title="Đã hủy" data-tab="da-huy" th:href="@{'user/purchase/'+3}">
+          <span class="_20hgQK">Đã hủy</span>
+        </a>
+      </div>
+<script type="text/javascript">
+
+function navigateToURL(url) {
+  window.location.href = url;
+}
+
+</script>
+
+
+      <!--  -->
+
+    </div>
+    <div class="container">
+      <div class="tab-content">
+        <div class="content-Order tab-pane fade active show" id="cho-thanh-toan">
+          <div class="KrPQEI">
+            <div class="EQko8g">
+              <div class="qP6Mvo">
+                <a href="/user/purchase/order/128661676232113?type=3">
+                  <i class="fa fa-truck"></i>
+                  <span th:text="${messages2}"></span>
+                  <i class="fa-sharp fa-solid fa-question"></i>
+                </a>
+
+
+              </div>
+              <div class="Vw7Xs" th:text="${messages}"></div>
+            </div>
+          </div>
+          <!-- ------------------------------------------------------------ -------------------  -->
+   <div th:each="order : ${orders}">
+    <div style="padding-top: 10px; color: #ee4d2d; display: flex;">
+        <div style="display: flex;">
+            <h5>#000</h5>
+            <h5 th:text="${order.orderId}"></h5>
+        </div>
+        <h6 style="padding-top: 5px; padding-left: 20px; color: #26aa99;" th:text="${order.orderDate}"> MP 12: 20/06/2023</h6>
+    </div>
+<div class="item-Oder" th:each="detail : ${order.orderDetails}">
+    <div class="img-oder">
+        <img  th:src="${'/home/images/' + detail.product.image}" alt="">
+    </div>
+    <div class="content-item">
+        <div class="title-oder">
+            <span th:text="${detail.product.name}" ></span>
+        </div>
+        <div style="display: flex;">
+            <h6>Phân loại hàng:</h6>
+            <h6 th:text="${detail.product.category.name}"></h6>
+        </div>
+        <div>
+            X1
+        </div>
+    </div>
+</div>
+
+    <div class="total-oder">
+        <div style="margin: 0 10px 0 0;">Thành tiền:</div>
+        <div style="color: #ee4d2d; font-size: 24px; line-height: 30px;"
+             th:text="${#numbers.formatDecimal(order.amount, 0, 'COMMA', 1, 'POINT')}">₫59.046</div>
+        <h4>đ</h4>
+    </div>
+
+   
+          <div class="button-oder">
+             <a  th:href="@{'user/purchase/update/'+${order.orderId}}">
+             <button type="submit" class="btn4 btn-danger" th:if="${!isitem && isitem2!=3}" >Đã Nhân Hàng</button>
+             </a>
+            <button type="button" class="btn4" th:if="${isitem}" style="background-color: rgb(196, 201, 205);">Chờ</button>
+            <button type="button" class="btn4 btn-danger" th:if="${isitem}">Hủy Đơn Hàng</button>
+            <button type="button" onclick="window.location.href='/site/contact.html'" class="btn4 btn-light" th:unless="${isitem2==2}">Liên Hệ
+              Người Bán</button>
+
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+        <div class="content-Order tab-pane fade  show" id="dang-giao">
+           <div class="KrPQEI">
+            <div class="EQko8g">
+              <div class="qP6Mvo">
+                <a href="/user/purchase/order/128661676232113?type=3">
+                  <i class="fa fa-truck"></i>
+                  <span th:text="${messages2}"></span>
+                  <i class="fa-sharp fa-solid fa-question"></i>
+                </a>
+
+
+              </div>
+              <div class="Vw7Xs" th:text="${messages}"></div>
+            </div>
+          </div>
+          <!-- ------------------------------------------------------------ -------------------  -->
+   <div th:each="order : ${orders}">
+    <div style="padding-top: 10px; color: #ee4d2d; display: flex;">
+        <div style="display: flex;">
+            <h5>#000</h5>
+            <h5 th:text="${order.orderId}"></h5>
+        </div>
+        <h6 style="padding-top: 5px; padding-left: 20px; color: #26aa99;" th:text="${order.orderDate}"> MP 12: 20/06/2023</h6>
+    </div>
+<div class="item-Oder" th:each="detail : ${order.orderDetails}">
+    <div class="img-oder">
+        <img  th:src="${'/home/images/' + detail.product.image}" alt="">
+    </div>
+    <div class="content-item">
+        <div class="title-oder">
+            <span th:text="${detail.product.name}" ></span>
+        </div>
+        <div style="display: flex;">
+            <h6>Phân loại hàng:</h6>
+            <h6 th:text="${detail.product.category.name}"></h6>
+        </div>
+        <div>
+            X1
+        </div>
+    </div>
+</div>
+
+    <div class="total-oder">
+        <div style="margin: 0 10px 0 0;">Thành tiền:</div>
+        <div style="color: #ee4d2d; font-size: 24px; line-height: 30px;"
+             th:text="${#numbers.formatDecimal(order.amount, 0, 'COMMA', 1, 'POINT')}">₫59.046</div>
+        <h4>đ</h4>
+    </div>
+
+   
+          <div class="button-oder">
+            <button type="submit" class="btn4 btn-danger" style="background-color: rgb(196, 201, 205);">Đã Nhân Hàng</button>
+            <button type="button" onclick="window.location.href='/site/contact.html'" class="btn4 btn-light">Liên Hệ
+              Người Bán</button>
+
+
+          </div>
+
+
+        </div>
+         
+
+
+        </div>
+        
+        
+      </div>
+    </div>
+
+
+
+
+
+  </main>
+
+
+
+</body>
+
+</html>

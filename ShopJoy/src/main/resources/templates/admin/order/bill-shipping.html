@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
+
+<head>
+
+<base href="/">
+</head>
+
+<body>
+
+
+	<!-- #main -->
+
+	<main id="main" class="main" layout:fragment="content">
+
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Shipping Confirmation</h5>
+				<div class="container mt-5">
+				<!--  
+					<div class="row mt-3">
+						<form action="">
+							<div class="col-lg-2">
+								<table>Page Size
+								</table>
+								<select class="form-select" aria-label="Default select example"
+									name="size" id="size" onchange="this.form.submit()">
+									<option th:selected="${orderPage.size==5}" value="5">5</option>
+									<option th:selected="${orderPage.size==10}" value="10">10</option>
+									<option th:selected="${orderPage.size==15}" value="15">15</option>
+									<option th:selected="${orderPage.size==20}" value="20">20</option>
+
+								</select>
+							</div>
+
+
+						</form>
+					</div>
+-->
+
+					<table class="table align-middle mb-0 bg-white mt-2"
+						>
+						<thead class="bg-light">
+							
+                                <tr>
+                                    <th>#ID</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Order_date</th>
+                                    <th>Status</th>
+                                    <th>&nbsp;</th>
+                                  </tr>
+								
+							
+						</thead>
+						<tbody>
+							<form th:action="@{/admin/orders/save2}" method="post">
+						
+							<tr th:each="order ,iStat : ${orders}">
+							
+								<td>
+									<p class="fw-normal mb-1"  th:text="${order.orderId}"></p>
+									<input type="text" th:value="${order.orderId}" th:name="orderId" hidden>
+
+								</td>
+
+								<td>
+									<p class="fw-normal mb-1" th:text="${order.customer.fullname}"></p>
+
+								</td>
+								<td>
+									<p class="fw-normal mb-1" th:text="${order.amount}"></p>
+
+								</td>
+								<td>
+									<p class="fw-normal mb-1" th:text="${order.orderDate}"></p>
+
+								</td>
+                                
+                                    <td>
+                                        <select th:name="inputState" class="form-select"  style="width: 200px; color: red;">
+                                            <option th:value="1" th:selected="${order.status == 1}">Đã Xác Nhận</option>
+                                            <option th:value="2" th:selected="${order.status == 2}">Vẫn Chuyển</option>
+                                        </select>
+                                    </td>
+   
+                                    
+
+								
+                               
+								<td><a
+									th:href="@{'/admin/orders/view'+ ${order.orderId}}"
+									class="btn  btn-sm btn-rounded" style="text-decoration: none;">
+										<i class="fa-solid fa-info"></i>
+								</a> 
+								<button type="submit" class="btn btn-link"> <i class="fa fa-download" style="color: black;"></i></button>
+								
+								   
+								 <a
+									th:href="@{'/admin/orders/delete/'+${order.orderId}}"
+									class="btn  btn-sm btn-rounded" style="text-decoration: none;">
+										<i class="fa-sharp fa-solid fa-trash"></i>
+								</a></td>
+								
+							</tr>
+						</form>
+							
+
+						</tbody>
+					</table>
+					<!--   
+					<div class="row">
+
+						<div class=" col-md-3 pt-2 ">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="dataTable_paginate" th:if="${orderPage.totalPages > 0}">
+								<ul class="pagination">
+									<li
+										th:class="${orderPage.first} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/orders/page(size=${orderPage.size},page=${0})}">First</a>
+									</li>
+									<li
+										th:class="${orderPage.first} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/orders/page(size=${orderPage.size},page=${orderPage.number -1})}">Pre</a>
+									</li>
+									<li
+										th:class="${orderPage.last} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/orders/page(size=${orderPage.size},page=${orderPage.number} +1)}">Next</a>
+									</li>
+									<li
+										th:class="${orderPage.last} ? 'page-item disabled' : 'page-item'">
+										<a aria-controls="dataTable" data-dt-idx="0" tabindex="0"
+										class="page-link"
+										th:href="@{/admin/orders/page(size=${orderPage.size},page=${orderPage.totalPages}-1)}">Last</a>
+									</li>
+								</ul>
+
+							</div>
+						</div>
+					</div>
+					 -->
+				</div>
+			</div>
+		</div>
+
+	</main>
+	<!-- End #main -->
+
+
+
+</body>
+</html>

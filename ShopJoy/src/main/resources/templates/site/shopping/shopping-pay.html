@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Template Main C<link th:href="@{https://fonts.gstatic.com}" rel="preconnect">
+    SS File -->
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap}">
+    
+    <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <title> SHOPPING CART </title>
+  </head>
+  <base href="/">
+  <body>
+ <header id="header">
+        <!-- Navbar -->
+        <a href="HomePage.html"> <img src="images/logo.png" alt="" class="logo"></a>
+        <!-- Navbar -->
+        <div>
+            <ul id="navbar">
+
+                <li><a href="">GIỎ HÀNG</a> <i class="fa-solid fa-bag-shopping" style="font-size: 25px;"></i></li>
+
+                <li><a href=""></a>THANH TOÁN <i class="fa-brands fa-cc-apple-pay" style="font-size: 25px;"></i></li>
+
+                <li><a href=""></a>HOÀN TẤT<i class="fa-solid fa-square-check" style="font-size: 25px;"></i></li>
+
+            </ul>
+        </div>
+    </header>
+    <div class="container-fluid">
+        <section class="h-100 h-custom">
+            <div class="container py-4 h-100">
+                 <form th:action="@{/shopping/createInvoice}" class="needs-validation" method="post" novalidate> 
+            
+                <div class="row">
+                    <div class="col-6">
+                        <div style="display: flex; padding-bottom: 10px;">
+                            <i class="fa-solid fa-location-dot" style="font-size: 25px; padding-right: 10px;"></i>
+                            <h4>THÔNG TIN NHẬN HÀNG</h4>
+                        </div>
+                       
+                        <div class="row">
+                      
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example3" class="form-control" th:value="${session.fullname}" placeholder="Họ tên" required />
+                            </div>
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example4" th:value="0395186435" class="form-control"
+                                    placeholder="Số điện thoại" required />
+                            </div>
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example4" class="form-control"
+                                    placeholder="Địa Chỉ (Số nhà,tên đường)" required/>
+                            </div>
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <select class="form-select" style="height: 50px;" required>
+                                    <option value="1" selected>Hồ Chí Minh</option>
+                                    <option>Hà Nội</option>
+                                    <option>Đà Nẵng</option>
+                                    <option>Bình Dương</option>
+                                    <option>Đồng Nai</option>
+                                    <option>Khánh Hòa</option>
+                                    <option>Hải Phòng</option>
+                                    <option>Long An</option>
+                                    <option>Quảng Nam</option>
+                                    <option>Bà Rịa Vũng Tàu</option>
+                                    <option>Đắk Lắk</option>
+                                    <option>Cần Thơ</option>
+                                    <option>Bình Thuận</option>
+                                    <option>Lâm Đồng</option>
+                                    <option>Thừa Thiên Huế</option>
+                                    <option>Kiên Giang</option>
+                                    <option>Bắc Ninh</option>
+                                    <option>Quảng Ninh</option>
+                                    <option>Thanh Hóa</option>
+                                    <option>Nghệ An</option>
+                                    <option>Hải Dương</option>
+                                    <option>Gia Lai</option>
+                                    <option>Bình Phước</option>
+                                    <option>Hưng Yên</option>
+                                    <option>Bình Định</option>
+                                    <option>Tiền Giang</option>
+                                    <option>Thái Bình</option>
+                                    <option>Bắc Giang</option>
+                                    <option>Hòa Bình</option>
+                                    <option>An Giang</option>
+                                    <option>Vĩnh Phúc</option>
+                                    <option>Tây Ninh</option>
+                                    <option>Thái Nguyên</option>
+                                    <option>Lào Cai</option>
+                                    <option>Nam Định</option>
+                                    <option>Quảng Ngãi</option>
+                                    <option>Bến Tre</option>
+                                    <option>Đắk Nông</option>
+                                    <option>Cà Mau</option>
+                                    <option>Vĩnh Long</option>
+                                    <option>Ninh Bình</option>
+                                    <option>Phú Thọ</option>
+                                    <option>Ninh Thuận</option>
+                                    <option>Phú Yên</option>
+                                    <option>Hà Nam</option>
+                                    <option>Hà Tĩnh</option>
+                                    <option>Đồng Tháp</option>
+                                    <option>Sóc Trăng</option>
+                                    <option>Kon Tum</option>
+                                    <option>Quảng Bình</option>
+                                    <option>Quảng Trị</option>
+                                    <option>Trà Vinh</option>
+                                    <option>Hậu Giang</option>
+                                    <option>Sơn La</option>
+                                    <option>Bạc Liêu</option>
+                                    <option>Yên Bái</option>
+                                    <option>Tuyên Quang</option>
+                                    <option>Điện Biên</option>
+                                    <option>Lai Châu</option>
+                                    <option>Lạng Sơn</option>
+                                    <option>Hà Giang</option>
+                                    <option>Bắc Kạn</option>
+                                    <option>Cao Bằng</option>
+
+                                </select>
+                            </div>
+                            <!-- Text input -->
+
+                            <div class="col">
+                                <div class="form-outline">
+                                     <input type="text" id="form6Example4" class="form-control"
+                                    placeholder="Huyện" required/>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                   <input type="text" id="form6Example4" class="form-control"
+                                    placeholder="xã" required />
+                                </div>
+                            </div>
+
+
+                        </div>
+                       
+                        <div class="row" style="border-bottom: 3px solid; color: #ccbebe; padding-top: 20px;">
+
+
+                        </div>
+                        <div class="row mt-4">
+                            <h4>PHƯƠNG THỨC GIAO HÀNG </h4>
+                            <div
+                                style="border: 1px solid #908787; height: 100px; width: 100%; padding-top: 5px; background-color: #fbfdff!important;">
+                                <div class="form-check  d-flex  mb-4">
+                                    <input class="form-check-input me-2" type="checkbox" value="true" id="form5Example3"
+                                        checked />
+                                    <label class="form-check-label" for="form5Example3">
+                                        Giao hàng tiêu chuẩn
+                                    </label>
+
+
+                                </div>
+
+                                <span>Thời gian dự kiến: 11/06 - 14/06
+                                </span>
+                                <span style="padding-left: 60px;"> Phí Giao Hàng: 30.000.000VND</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+               
+
+                    <div class="col-6" style="padding-left: 50px;">
+                    
+                        <div>
+                            <h4> THÔNG TIN ĐƠN HÀNG <span style="font-weight: 400; font-size: 15px;">(2 sản phẩm)</span>
+                            </h4>
+                        </div>
+                        <div class="row" style="border-bottom: 3px solid; color: #ccbebe; padding-top: 10px;">
+                        </div>
+                        <div class="item-oder2"  th:each="product, iterStat :${session.cartItems}">
+                            <div style="height: 120; width: 80px; padding-bottom: 20px;">
+                                <img  th:src="${'/home/images/' + product.image}"  alt="" style="width: 100%; height: 100%;">
+
+                            </div>
+                            <div class="content-oder2" >
+                                <div  th:text="${product.name}">
+                                </div>
+                                <div class="Total-oder2">
+                                    <h4  th:text="${product.quantity}">1</h4>
+                                    <h4 style="padding-left: 5px;">X</h4>
+                                    <h4 style="padding-left: 7px;" th:text="${#numbers.formatDecimal(product.untiPrice, 0, 'COMMA', 1, 'POINT')}" ></h4>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <hr class="my-3">
+                        <div class="d-flex justify-content-between ">
+                            <h5 class="text-body">Tổng cộng</h5>
+                            <h7 th:text="${#numbers.formatDecimal(session.tolat, 0, 'COMMA', 1, 'POINT')}"></h7>
+                          </div>
+                          <div class="d-flex justify-content-between mt-2 ">
+                            <h5 class="text-body">Ưu đãi </h5>
+                            <h7>0đ</h7>
+                          </div>
+                          <div class="d-flex justify-content-between mt-2 ">
+                            <h5 class="text-body">Phí giao hàng</h5>
+                            <h7>30.000đ</h7>
+                          </div>
+      
+                        <hr class="my-3">
+      
+                        <div class="d-flex justify-content-between mb-5">
+                          <h5 class="text-uppercase">thanh toán</h5>
+                          <h5 th:text="${#numbers.formatDecimal(session.payment, 0, 'COMMA', 1, 'POINT')}" ></h5>
+                        </div>
+      
+                            <div>
+                             
+                              
+                                <button type="submit"  class="btn btn-dark btn-block btn-lg " style="width: 100%;"> TIẾN HÀNH ĐẶT HÀNG </button>
+                            
+                            </div>
+
+
+                    </div>
+                   
+
+                </div>
+                  </form>
+
+
+            </div>
+        </section>
+    </div>
+           <script>
+                  // Example starter JavaScript for disabling form submissions if there are invalid fields
+                  (() => {
+                    'use strict';
+    
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    const forms = document.querySelectorAll('.needs-validation');
+    
+                    // Loop over them and prevent submission
+                    Array.prototype.slice.call(forms).forEach((form) => {
+                      form.addEventListener('submit', (event) => {
+                        if (!form.checkValidity()) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                      }, false);
+                    });
+                  })();
+                </script>
+  
+  
+  </body>
+
+
+
+
+  
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+      <script th:src="@{/js/srcipt.js}"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
