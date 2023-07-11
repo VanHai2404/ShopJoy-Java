@@ -37,8 +37,10 @@ public class Product implements Serializable {
 	private double untiPrice;
 	@Column(length = 200)
 	private String image;
-	@Column(columnDefinition = "nvarchar(100) not null")
+	@Column(columnDefinition = "nvarchar(1000) not null")
 	private String description;
+	@Column(columnDefinition = "nvarchar(100)")
+	private String size;
 	@Column(nullable = true)
 	private double discount;
 	@Temporal(TemporalType.DATE)

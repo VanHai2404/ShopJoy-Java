@@ -64,4 +64,6 @@ public interface ProductService {
 
 	List<Product> findByNameContaining(String Name);
 
+	List<Product> findByCategory_CategoryIdIn(List<Long> categoryIds);
+
 }

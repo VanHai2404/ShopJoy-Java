@@ -36,7 +36,7 @@
                   
                           <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
                   
-                            <form th:action="@{ulogin}" method="post" th:object="${USER}" style="width: 23rem;" >
+                            <form th:action="@{ulogin}" method="post" th:object="${USER}" style="width: 23rem;" class="needs-validation" novalidate >
                         
 							
 
@@ -65,12 +65,12 @@
 							<h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
                   
                               <div class="form-outline mb-4">
-                                <input type="email" id="form2Example18" th:field="*{username}" class="form-control form-control-lg" />
+                                <input type="email" id="form2Example18" th:field="*{username}" class="form-control form-control-lg"  required/>
                                 <label class="form-label" for="form2Example18">Email address</label>
                               </div>
                   
                               <div class="form-outline mb-4">
-                                <input type="password" id="form2Example28" th:field="*{password}" class="form-control form-control-lg" />
+                                <input type="password" id="form2Example28" th:field="*{password}" class="form-control form-control-lg" required />
                                 <label class="form-label" for="form2Example28">Password</label>
                               </div>
                               <div class="form-outline mb-3">

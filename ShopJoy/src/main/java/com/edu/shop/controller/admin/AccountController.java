@@ -185,6 +185,11 @@ public class AccountController {
 			   	return "admin/accounts/pages-account-list";
 	}
 	
+	@GetMapping("profile")
+	public String profile(ModelMap map) {
+		return "admin/accounts/users-profile";
+	}
+	
 	
 	
 	}

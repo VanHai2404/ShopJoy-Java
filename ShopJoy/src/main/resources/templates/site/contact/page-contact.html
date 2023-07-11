@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{site/HomeLayout.html}">
+   
+
+<head>
+
+ 
+</head>
+
+<body>
+   <main layout:fragment="content">
+
+
+    
+    <section id="contact" class="contact">
+
+        <!--  Section Title -->
+        <div class="container section-title " style="text-align: center; padding-top: 50px;" >
+          <h2>Contact</h2>
+          <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        </div><!-- End Section Title -->
+  
+        <div class="container" data-aos="fade-up" data-aos-delay="100">
+  
+          <div class="row gy-4">
+  
+            <div class="col-lg-6">
+  
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="200">
+                    <i class="fa fa-location-dot"></i>
+                    <h3>Address</h3>
+                    <p>122 Nguyễn thị thập </p>
+                    <p>Đà Nẵng, Liền chiều</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="300">
+                    <i class="fa fa-light fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>+84 039 518 6435</p>
+                    <p>+84 045 028 7625</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="400">
+                    <i class="fa-regular fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>hovanhai@gmail.com</p>
+                    <p>haihvpd06956@edu.fpt.vn</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+                <div class="col-md-6">
+                  <div class="info-item" data-aos="fade" data-aos-delay="500">
+                    <i class="fa-regular fa-clock"></i>
+                    <h3>Open Hours</h3>
+                    <p>Monday - Friday</p>
+                    <p>9:00AM - 05:00PM</p>
+                  </div>
+                </div><!-- End Info Item -->
+  
+              </div>
+  
+            </div>
+  
+            <div class="col-lg-6">
+              <form th:action="@{/contact}" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                <div class="row gy-4">
+  
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  </div>
+  
+                  <div class="col-md-6 ">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                  </div>
+  
+                  <div class="col-md-12">
+                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  </div>
+  
+                  <div class="col-md-12 text-center">
+                    <div class="loading">Loading</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+  
+                    <button type="submit">Send Message</button>
+                  </div>
+  
+                </div>
+              </form>
+            </div><!-- End Contact Form -->
+  
+          </div>
+  
+        </div>
+  
+      </section><!-- End Contact Section -->
+    
+    
+   </main>
+
+
+    
+</body>
+</html>

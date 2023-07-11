@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{site/HomeLayout.html}">
+   
+
+<head>
+
+ 
+</head>
+
+<body>
+   <main layout:fragment="content">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const menuItems = document.querySelectorAll(".menu a");
+        const tabPanes = document.querySelectorAll(".tab-pane");
+      
+        menuItems.forEach(function(item) {
+          item.addEventListener("click", function(event) {
+            event.preventDefault();
+      
+            // Lấy tab được chọn từ thuộc tính data-tab
+            const selectedTab = this.getAttribute("data-tab");
+      
+            // Ẩn tất cả các tab-pane
+            tabPanes.forEach(function(pane) {
+              pane.classList.remove("active");
+            });
+      
+            // Hiển thị tab-pane được chọn
+            document.getElementById(selectedTab).classList.add("active");
+          });
+        });
+      });
+      
+          </script>
+          <div class="container-fluid" style="padding-top: 40px;">
+              <div class="menu">
+                  <div class="user-box">
+                      <h3 class="user-box__title">CHÍNH SÁCH</h3>
+                      <div class="collapse show">
+                          <div class="user-box__content mt-12">
+                              <ul class="icon-menu-nav icon-menu-nav--2">
+                                  <li class="">
+                                      <a   data-tab="chinh-sach-doi-tra" >Chính sách đổi trả</a>
+                                  </li>
+                                  <li>
+                                      <a  data-tab="chinh-sach-bao-hanh" >Chính sách bảo hành</a>
+                                  </li>
+                                  <li class="">
+                                      <a  data-tab="chinh-sach-bao-mat" >Chính sách bảo mật</a>
+                                  </li>
+                                  <li class="">
+                                      <a  data-tab="dieu-khoan-su-dung" >Điều khoản sử dụng</a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="user-box" style="border-bottom:0">
+                      <h3 class="user-box__title">HƯỚNG DẪN</h3>
+                      <div class="collapse show">
+                          <div class="user-box__content mt-12">
+                              <ul class="icon-menu-nav icon-menu-nav--2 nav d-block">
+                                
+                                  <li class="active">
+                                      <a href="/chinh-sach#huong-dan-chon-size" data-tab="huong-dan-chon-size" >Hướng dẫn chọn size</a>
+                                  </li>
+                                  <li>
+                                      <a href="/chinh-sach#phan-biet-phom-ao" data-tab="phan-biet-phom-ao" >Phân biệt phom áo</a>
+                                  </li>
+                              
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                <!-- Thêm nội dung menu ở đây -->
+              </div>
+              <div class="content2">
+                  <div class="tab-content">
+                      <div class="tab-pane fade active show" id="chinh-sach-doi-tra">
+                          <h2 class="fz-18 fw-bold border-bottom border-5 border-C05 pb-15 mb-15">CHÍNH SÁCH ĐỔI TRẢ</h2>
+                         <div class="accordion-body">
+                         <h4>A. CHÍNH SÁCH ĐỔI HÀNG ONLINE</h4>  <br>
+                         <h5>1. Dịch vụ đổi hàng tận nơi:</h5><br>
+                         <p> -Đổi hàng tận nơi, shipper sẽ đến tận nhà để đổi hàng cho bạn.
+                          - Áp dụng 01 lần đổi/ 01 đơn hàng. <br>
+                          - Áp dụng đổi hàng với tất cả các sản phẩm (bao gồm sản phẩm trong chương trình sale) thời gian đổi hàng trong vòng 7 ngày kể từ ngày khách hàng nhận bưu phẩm.<br>
+                          -  Trường hợp sản phẩm hết size bạn cần, tụi mình sẽ hỗ trợ bạn đổi sang sản phẩm khác bằng giá trị hoặc cao hơn, trường hợp khách hàng không đồng ý đổi sản phẩm khác, bên mình sẽ refund lại giá trị đơn hàng. <br>
+                          - Chi phí vận chuyển khi đổi hàng được Levents hỗ trợ 1 chiều cho bạn (bạn chỉ cần thanh toán phí ship khi nhận sản phẩm đúng) và 2 chiều đối với sản phẩm do lỗi sản xuất.</p> 
+                          <h5>2. Điều kiện đổi hàng</h5> <br>
+                         <p> - Chỉ nhận đổi sản phẩm khi có trường hợp khách yêu cầu đổi size, phát sinh lỗi từ nhà sản xuất (ố màu, phai màu, lỗi chất liệu, lỗi đường may,...) hoặc giao nhầm sản phẩm.<br>
+                          - Sản phẩm đổi phải chưa qua sử dụng, chưa qua giặt tẩy, không bị vấy bẩn, ám mùi, còn giữ nguyên hóa đơn mua hàng và nhãn mác, sản phẩm đổi phải còn nguyên quà tặng kèm (nếu có).<br>
+                          - Sản phẩm đổi phải có giá trị tương đương hoặc cao hơn sản phẩm được đổi. Vui lòng thanh toán chi phí chênh lệch giá trị sản phẩm nếu có.</p> 
+                          <h5>3. Quy trình đổi hàng:</h5><br>
+                         <p> Khách hàng vui lòng đọc kỹ Điều kiện đổi hàng, kiểm tra kỹ sản phẩm trước khi đổi và thực hiện các bước sau:<br>
+                          + Bước 1: Nhắn tin cho các kênh facebook hoặc Shopee, Lazada chính thức của Lunacy.<br>
+                          + Bước 2: Cung cấp cho nhân viên video unbox sản phẩm theo hướng dẫn bên dưới.<br>
+                          + Bước 3: Cung cấp cho tụi mình thông tin địa chỉ của bạn gồm: Họ tên, số điện thoại, địa chỉ đồng thời quay video gói hàng có dán thông tin (Họ tên, số điện thoại, địa chỉ)<br>
+                          + Bước 4: Sau khi xác nhận đổi hàng, tụi mình gửi hàng đúng size/ mẫu về địa chỉ của bạn đồng thời shipper sẽ nhận sản phẩm sai size về của Lunacy.<br>
+                          
+                          Cách thức quay video unbox sản phẩm:<br>
+                          - Quay toàn bộ quá trình mở và kiểm tra từng món hàng<br>
+                          - Clip phải rõ nét, trung thực không cắt ghép hay chỉnh sửa </p> 
+                          
+                         <h4>B. CHÍNH SÁCH ĐỔI HÀNG MUA TẠI CỬA HÀNG:</h4><br>
+                          <h5>1. Chính sách áp dụng:</h5><br>
+                          - Chỉ áp dụng đổi hàng với sản phẩm nguyên giá, không áp dụng cho sản phẩm giảm giá.<br>
+                          - Áp dụng 01 lần đổi/ 01 đơn hàng.<br>
+                          - Thời gian đổi hàng trong vòng 7 ngày kể từ ngày xuất hoá đơn.<br>
+                          - Áp dụng đổi hàng tại tất cả các cửa hàng Lunacy.<br><br>
+                          <h5>2. Điều kiện đổi hàng:</h5><br>
+                          - Chỉ nhận đổi sản phẩm khi có trường hợp phát sinh lỗi từ nhà sản xuất (ố màu, phai màu, lỗi chất liệu, lỗi đường may,...) hoặc giao nhầm sản phẩm.<br>
+                          - Chỉ nhận đổi Size với những sản phẩm cùng loại, không áp dụng đổi Size sang sản phẩm khác.<br>
+                          - Sản phẩm đổi phải chưa qua sử dụng, chưa qua giặt tẩy, không bị vấy bẩn, ám mùi, còn giữ nguyên hóa đơn mua hàng và nhãn mác, sản phẩm đổi phải còn nguyên quà tặng kèm (nếu có).<br>
+                          - Sản phẩm đổi phải có giá trị tương đương hoặc cao hơn sản phẩm được đổi. Vui lòng thanh toán chi phí chênh lệch giá trị sản phẩm nếu có.<br>
+      
+                          Mọi thắc mắc về Chính sách đổi hàng, khách hàng vui lòng gọi đến hotline 098 360 51 70 để được bộ phận bán hàng hướng dẫn và giải quyết.<br>
+                      </div>
+                      </div>
+                      <div class="tab-pane fade show" id="chinh-sach-bao-hanh">
+                          <h2 class="fz-18 fw-bold border-bottom border-5 border-C05 pb-15 mb-15">CHÍNH SÁCH BẢO HÀNH</h2>
+                       <div class="accordion-body">
+                         <h4>1. ĐIỀU KIỆN BẢO HÀNH</h4>  <br>
+                         <h5>Lunacy bảo hành miễn phí với tấc cả sản phẩm trong các trường hợp sau:</h5><br>
+                          - Bảo hành miễn phí trong vòng 07 ngày kể từ ngày mua hàng <br>
+                          - Sản phẩm có các sự cố kỹ thuật như:Đứt chỉ,đứt cúc,xù lông,bạc màu...<br>
+                          - Sản phẩm bị lỗi do quá trình vận chuyển<br>
+                          - Thu hồi và đổi hàng mới hoàn toàn miễn phí<br><br>
+                          <h5>2. NHỮNG TRƯỜNG HỢP KHÔNG ĐƯỢC BẢO HÀNH</h5> <br>
+                          - Sản phẩm bị bám màu khi giặt chung sản phẩm khác <br>
+                          - Sử dụng hoá chất lên sản phẩm<br>
+                          - Dùng bàn chải chà mạnh lên sản phẩm<br>
+                          - Sản phẩm bị hư hỏng do tác động từ bên ngoài hoặc bị vật nhọn làm rách.<br>
+                          - Ủi và sấy ở nhiệt độ cao.<br>
+                          - Sản phẩm có dấu hiệu đã qua sửa chửa ở nơi khác.<br><br>
+                          <h5>3. CÁC TRƯỜNG HỢP KHÁC</h5><br>
+                         <p> Mọi thông tin chi tiết khác hoặc các thắc mắc cần giải đáp thêm quý khách hàng vui lòng liên hệ hotline 098 360 51 70</p> 
+                      </div>
+                      </div>
+                      <div class="tab-pane fade show" id="chinh-sach-bao-mat">
+                          <h2 class="fz-18 fw-bold border-bottom border-5 border-C05 pb-15 mb-15">CHÍNH SÁCH BẢO MẬT</h2>
+                          <div class="accordion-body">
+                         <h4>1. MỤC ĐÍCH THU THẬP THÔNG TIN NGƯỜI TIÊU DÙNG</h4>  <br>
+                         <p>
+                         Cung cấp dịch vụ cho Khách hàng và quản lý,sử dụng thông tin cá nhân của Người Tiêu Dùng nhằm mục đích quản lý cơ sở dữ liệu về Người Tiêu Dùng và kịp thời xử lý các tình huống phát sinh(Nếu có).
+                         </p>
+                          <h5>2. PHẠM VI SỬ DỤNG THÔNG TIN CÁ NHÂN</h5>  <br>
+                       - Website lunacy.vn sử dụng thông tin của Người Tiêu Dùng cung cấp để:
+                        Cung cấp dịch vụ,thông tin sản phẩm đến Người Tiêu Dùng và Lunacy.<br>
+                       - Gửi các thông báo về các hoạt động trao đổi thông tin giữa Người Tiêu Dùng và Lunacy.
+                      - Ngăn ngừa các hoạt động phá huỷ, chiếm đoạt tài khoản người dùng của Người Tiêu Dùng.
+                      - Liên lạc và giải quyết khiếu nại với Người Tiêu Dùng.
+                      - Xác nhận và trao đổi thông tin về giao dịch của Người Tiêu Dùng tại Lunacy.
+                      - Trong trường hợp có yêu cầu của cơ quan quản lý nhà nước có thẩm quyền.<br><br>
+                       <h5>3. THỜI GIAN LƯU TRỮ THÔNG TIN CÁ NHÂN</h5>  <br>
+                       <p>
+                         Không có thời hạn hoặc ngoại trừ trường hợp Người Tiêu Dùng gửi có yêu cầu huỷ tới cho Ban quản trị hoặc Công ty bị giải thể bị phá sản.
+                         </p>
+                       <h5>3. NHỮNG NGƯỜI HOẶC TỔ CHỨC CÓ THỂ ĐƯỢC TIẾP CẬN VỚI THÔNG TIN CÁ NHÂN CỦA NGƯỜI TIÊU DÙNG</h5>  <br>
+                       <p>
+                         Người tiêu dùng đồng ý rằng ,trong trường hợp cần thiết,các cơ quan tổ chức cá nhân sau có quyền được tiếp cận và thu thập các thông tin cá nhân của mình,bao gồm:
+                         </p>
+                           - Ban quản trị.<br>
+                           - Bên thứ ba có dịch vụ tích hợp website lunacy.vn.<br>
+                           - Theo yêu cầu của cơ quan nhà nước có thẩm quyền.
+                      </div>
+                      </div>
+                      
+                      <div class="tab-pane fade show" id="dieu-khoan-su-dung">
+                          <h2 class="fz-18 fw-bold border-bottom border-5 border-C05 pb-15 mb-15">ĐIỀU KHOẢN SỬ DỤNG</h2>
+                         <div class="accordion-body">
+                         <p style="">
+                         Chào mừng bạn ghé thăm website chính thức của Lunacy
+                         </p>
+                          <p>
+                         Chúng tôi mong bạn vui lòng dành thời gian đọc và tìm hiểu những điều khoản về thoả thuận pháp lý giữa bạn và Lunacy như dưới đây.<br>
+                          Thông qua việc truy cập,duyệt nôi dung,hoặc sử dụng bất kỳ nội dung,hình ảnh nào của trang thông tin điện tử này,bạn(người sử dụng) công nhận răng bạn đã đọc,hiểu và nhất trí với việc tuân thủ các quy định của những điều khoản này.Nếu bạn không nhất trí với những điều khoản này,xin vui lòng không sử dụng trang thông tin điện tử này.
+                          Lunacy chịu trách nhiệm đảm bảo tính hợp pháp của việc cung cấp nội dung trên website đến người sử dụng.Mọi thông tin hình ảnh và toàn bộ nội dung được đăng tải trên website tuẩn thủ các quy định của pháp luật, và phù hợp với thuần phong mỹ tục Việt Nam.
+                         </p>
+                          <h5>1. QUYỀN VÀ TRÁCH NHIỆM CỦA LUNACY</h5>  <br>
+                          <p>
+                          Lunacy có quyền thay đổi và/hoặc chấm dứt các nội dung,tính năng của một phần hay toàn bộ website mà không cần thông báo trước với người dùng.<br>
+                          Lunacy có quyền thực hiện các biện pháp an ninh để bảo vệ và chông các truy cập trái phép hoặc sửa đổi trái phép,tiết lộ hoặc phá huỷ thông tin trên website.<br>
+                          Khi sử dụng website, thông tin sẽ được truyền qua một phương tiện/thiết bị nằm ngoài sự kiểm soát của Lunacy.Theo đó Lunacy không chịu trách nhiệm cho hoặc liên quan đến bất kỳ sự chậm trể,thất bại,bị giản đoạn của bất kỳ dữ liệu hoặc các thông tin khác được truyền trong kết nối với việc sử dụng của Website.
+                          <br>
+                          Thông tin cá nhân như địa chỉ, email, số điện thoại của người sử dụng website (do người sử dụng tự nguyện cung cấp bằng các hình thức khác nhau trên website) có thể được sử dụng nội bộ cho mục đích nâng cấp các sản phẩm, dịch vụ của Lunacy. Lunacy cam kết không chủ động tiết lộ bất kỳ thông tin nào của người sử dụng cho bên thứ ba, ngoại trừ trường hợp có yêu cầu bằng văn bản của các đơn vị điều tra theo đúng luật pháp hiện hành. Khi đó, Lunacy sẽ thông báo tới người sử dụng bằng văn bản. Tuy nhiên, mặc dù có các Công nghệ bảo mật và hệ thống cũng được trang bị rất nhiều tính năng bảo mật, nhưng không một dữ liệu nào được truyền trên đường truyền internet mà có thể được bảo mật 100%. Do vậy, Lunacy không thể đưa ra một cam kết chắc chắn rằng thông tin bạn cung cấp cho chúng tôi sẽ được bảo mật một cách tuyệt đối, và cũng sẽ không chịu trách nhiệm trong trường hợp có sự truy cập trái phép thông tin cá nhân của người sử dụng. Tất cả các thông tin, tài liệu không mang tính chất riêng tư được người sử dụng đưa lên website đều không được xem là thông tin mật, Lunacy được phép toàn quyền sử dụng hay chuyền tải cho bất kỳ mục đích nào.
+                          Lunacy được phép sử dụng bất kỳ ý tưởng hay khái niệm nào mà bạn đã đưa lên Website cho tất cả các mục đích không giới hạn, bao gồm cả việc phát triển, sản xuất hay tiếp thị sản phẩm. Lunacy không có trách nhiệm phải bồi thường hay thưởng cho người cung cấp.<br>
+                          Bạn phải ý thức và bảo đảm những thông tin, tài liệu mà bạn gửi phải nằm trong quyền hạn sử dụng của bạn, điều đó có nghĩa Lunacy sẽ không vi phạm bất cứ quyền lợi nào của bên thứ ba.<br>
+                          Lunacy CÓ quyền từ chối một số tài liệu bạn gửi mà không bắt buộc phản hồi lý do.
+                          </p>
+                          <h5>2. QUYỀN VÀ TRÁCH NHIỆM CỦA NGƯỜI DỤNG</h5>  <br>
+                          <p>
+                          Bạn đảm bảo tuân theo pháp luật và các quy định liên quan đến việc sử dụng website của Lunacy; không can thiệp, gây ảnh hưởng đến việc sử dụng website của những người sử dụng khác, không can thiệp vào hoạt động và quản lý website của Lunacy<br>
+                          Bạn nhận thức rõ và chấp nhận rằng Lunacy và/hoặc các công ty thành viên/đơn vị trực thuộc nhân viên Lunacy không chịu trách nhiệm đối với bất kỳ tổn thất, thiệt hại, chi phí phát sinh từ bất kỳ quyết định nào của bạn khi sử dụng bất kỳ thông tin nào trên website với bất kỳ nguyên nhân gì.<br>
+                          Nếu bạn không bằng lòng với bất kỳ thông tin nào trên Website hoặc với bất kỳ điều khoản và điều kiện sử dụng thông tin trên website này thì phương thức duy nhất bạn nên thực hiện là chấm dứt truy cập/sử dụng thông tin trên website.
+                          </p>  <h5>3. ĐIỀU KHOẢN CHUNG</h5>  <br>
+                          <p>Một điều khoản sử dụng bị vô hiệu theo quyết định của tòa án có thẩm quyền sẽ không ảnh hưởng đến tính hiệu lực của các điều khoản còn lại. <br>
+                          Lunacy luôn hoan nghênh những ý kiến góp ý của bạn về nội dung website. Nếu Có một phần nào đó của website này mà bạn cho rằng đã có dấu hiệu vi phạm bản quyền của bên thứ ba, vui lòng gửi liên hệ với Ban Truyền Thông của Lunacy. <br>
+                          Thông báo này và tất cả các điều khoản sử dụng tạo thành toàn bộ thỏa thuận giữa Lunacy và bạn liên quan đến việc sử dụng các thông tin trên website. Lunacy có thể điều chỉnh nội dung thông báo này bất cứ lúc nào bằng cách cập nhật lên website. Bạn nên thường xuyên truy cập website để theo dõi các quy định ràng buộc này khi sử dụng.
+                          </p>
+                      </div>
+                      </div>
+                      <div class="tab-pane fade show " id="huong-dan-chon-size">
+                          <h2 class="fz-18 fw-bold border-bottom border-5 border-C05 pb-15 mb-15">HƯỚNG DẪN CHỌN SIZE</h2>
+                     <!--  <img src="/1428355432291766272/d/images/bang-size.svg" alt="" class="d-block w-100 h-auto"> -->  
+                          <img src="https://lunacy.vn/1428355432291766272/d/images/bang-size.jpg" alt="" class="d-block w-100 h-auto">
+                      </div>
+                      <div class="tab-pane fade show" id="phan-biet-phom-ao">
+                          <h2 class="fz-18 fw-bold border-bottom border-5 border-C05 pb-15 mb-15">PHÂN BIỆT PHOM ÁO</h2>
+                          <img src="https://lunacy.vn/1428355432291766272/d/images/phan-biet-phom-ao.svg" alt="" class="d-block w-100 h-auto">
+                      </div>
+                     
+                  </div>
+                <!-- Thêm nội dung để chát và cuộn xuống dưới -->
+              </div>
+            </div>
+    
+   </main>
+
+
+    
+</body>
+</html>

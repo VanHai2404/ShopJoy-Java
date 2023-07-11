@@ -68,26 +68,12 @@ public class ProductController {
 	@GetMapping("add")
 	public String add(Model model) {
 		model.addAttribute("product",new ProductDto());
-		
+	    model.addAttribute("isNewCustomer", true); // Form được sử dụng để tạo khách hàng mới
+
 		return "admin/products/pages-product";
         
 	}
-//	@GetMapping("edit/{categoryId}")
-//	public ModelAndView edit(ModelMap map,@PathVariable("categoryId") Long categoryId) {
-//		Optional<Category> opt= categoryService.findById(categoryId);
-//		CategoryDto dto = new CategoryDto();
-//		System.out.println("ID: "+categoryId);
-//		if(opt.isPresent()) {
-//			Category entity=opt.get();
-//			BeanUtils.copyProperties(entity, dto);
-//			dto.setIsEdit(true);
-//			map.addAttribute("category",dto);
-//			return new ModelAndView("admin/categories/categories",map);
-//		}		
-//		map.addAttribute("message","Category is not existed !");
-//		return new ModelAndView("forward:/admin/categories",map);	
-//	}
-	
+
 	@GetMapping("edit/{productId}")
 	public ModelAndView edit(ModelMap model,@PathVariable("productId") Integer productId) {
 		Optional<Product> opt = productService.findById(productId);
@@ -99,6 +85,8 @@ public class ProductController {
 			return new ModelAndView("admin/products/pages-product");
 			
 		}
+	    model.addAttribute("isNewCustomer", false); // Form được sử dụng để tạo khách hàng mới
+
 		return new ModelAndView("forward:/admin/products",model);	
 	}
 	
@@ -109,6 +97,7 @@ public class ProductController {
 		if(opt.isPresent()) {
 			if(!StringUtils.isEmpty(opt.get().getImage())) {
 				storageService.delete(opt.get().getImage());
+				System.out.println("Imge -----------"+opt.get().getImage());
 			}
 			productService.delete(opt.get());
 			model.addAttribute("message","Product is delete !");
@@ -116,7 +105,7 @@ public class ProductController {
 			model.addAttribute("message","Product is not Found !");
 			
 		}
-		return new ModelAndView("forward:/admin/products/page");
+		return new ModelAndView("forward:/admin/products/add");
 	}
 	
 	
@@ -125,6 +114,7 @@ public class ProductController {
 		// kiếm tra dữ liệu nhập vào 
 		if(result.hasErrors()) {
 			System.out.println("ko co ảnh ");
+			model.addAttribute("error","Lỗi Dữ liệu nhập vào !!");
 			return new ModelAndView("admin/products/pages-product");
 		}
 		Product entity = new Product();
@@ -132,10 +122,10 @@ public class ProductController {
 		Category category = new Category();
 		category.setCategoryId(dto.getCategoryId());
 		entity.setCategory(category);
-		if(dto.getImageFile().isEmpty()) {
-			model.addAttribute("message","Error images is Null ");
-			return new ModelAndView("admin/products/pages-product");
-		}
+//		if(dto.getImageFile().isEmpty()) {
+//			model.addAttribute("message","Error images is Null ");
+//			return new ModelAndView("admin/products/pages-product");
+//		}
 		if(!dto.getImageFile().isEmpty()) {
 			UUID uuid =UUID.randomUUID();
 			String uutring =uuid.toString();
@@ -149,13 +139,11 @@ public class ProductController {
 	
 		}
 		
-		
-		
 		productService.save(entity);
 		model.addAttribute("message","Product is save !");
 		
 		
-		return new ModelAndView("forward:/admin/products/page");
+		return new ModelAndView("admin/products/pages-product");
 	}
 	@GetMapping("page")
 	public String list(ModelMap map,@RequestParam(name = "search" ,required = false) String search,
@@ -163,8 +151,8 @@ public class ProductController {
 			@RequestParam("size") Optional<Integer> size) {
 	    int currentPage = page.orElse(0).intValue();
 	    int pageSize = size.orElse(5).intValue();
-
-	    Pageable pageable = PageRequest.of(currentPage, pageSize,Sort.by("name"));
+	
+	    Pageable pageable = PageRequest.of(currentPage, pageSize,Sort.by("productId").descending());
 	    Page<Product> resultPage = null;
 	    if(StringUtils.hasText(search)) {
 	    	resultPage =productService.findByNameContaining(search, pageable);
@@ -179,7 +167,7 @@ public class ProductController {
 	            int start = Math.max(1, currentPage - 2);
 	            int end = Math.min(currentPage + 2, totalPages);
 
-	            if (totalPages > 5) {
+	            if (totalPages > 5) { // 
 	                if (end == totalPages)
 	                    start = end - 5;
 	                else if (start == 1)
@@ -198,6 +186,8 @@ public class ProductController {
 	    map.addAttribute("productPage", resultPage);
 	   	return "admin/products/pages-product-list";
 	}
+	
+	
 	
 	@GetMapping("list")
 	public String listProduct() {

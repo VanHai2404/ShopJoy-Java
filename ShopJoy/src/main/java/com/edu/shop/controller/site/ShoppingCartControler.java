@@ -180,7 +180,7 @@ public class ShoppingCartControler {
 	        order.setCustomer(customer);
 	    } else {
 	    	model.addAttribute("error","BẠN CHƯA ĐĂNG NHẬP!");
-			return new ModelAndView("redirect: /ulogin");
+			return new ModelAndView("redirect:/ulogin",model);
 
 	    }
 		Date date = new Date();

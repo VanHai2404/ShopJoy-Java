@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/dashboardLayout.html}">
+   
+
+<head>
+
+ <base href="/">
+</head>
+
+<body>
+    <main id="main" class="main" layout:fragment="content">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Cutomers Tabs</h5>
+    
+            <div class="row">
+              <div class="col-11">
+              </div>
+              <div class="col-1">
+                <a th:href="@{/admin/customers/page}" style="text-decoration: none; color: black;">
+                  <i class="fa-solid fa-list" style="font-size: 35px;"></i>
+                </a>
+              </div>
+            </div>
+            <div class="tab-content pt-2" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div th:if="${message != null}" class="alert alert-primary text-center">
+                  <i>[[${message}]]</i>
+                </div>
+                <div th:if="${error != null}" class="alert alert-danger text-center">
+                  <i>[[${error}]]</i>
+                </div>
+                <!-- Multi Columns Form -->
+                <form class="row g-3 needs-validation" th:action="@{/admin/customers/saveOrUpadate}" method="post"
+                  enctype="multipart/form-data" th:object="${customer}" novalidate>
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <div class="col pt-4">
+                      <input type="email" class="form-control" id="inputEmail5" th:field="*{customerId}" readonly  > 
+                      </div>                  
+                      <div class="col pt-4">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" th:field="*{username}" required>
+                        <div class="invalid-feedback">Id kHông Đc bỏ trong</div>
+                      </div>
+                      <div class="col pt-4">
+                        <label class="form-label">Fullname</label>
+                        <input type="text" class="form-control" th:field="*{fullname}" required>
+    
+                      </div>
+                      <div class="col pt-4">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" th:field="*{email}" required>
+                        <div class="invalid-feedback">Id kHông Đc bỏ trong</div>
+                      </div>
+                      <div class="col pt-4">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" th:field="*{password}" required>
+                        <span></span>
+                      </div>
+                    </div>
+                    <div class="col-md-3 offset-2">
+                      <div class="col-md-6">
+                        <div class="pr">
+                          <script>
+                            function chooseFile(input) {
+                              if (input.files && input.files[0]) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                  document.getElementById('image').src = e.target.result;
+                                };
+                                reader.readAsDataURL(input.files[0]);
+                              }
+                            }
+                          </script>
+                          <img id="image"
+                            th:src="${customer.image !=null ? '/admin/customers/images/' + customer.image :'images/noimage.jpg'}"
+                            alt="" height="250px" width="200px">
+                        </div>
+                        <label for="inputEmail5" class="form-label">lmage File</label> <br>
+                        <input type="file" onchange="chooseFile(this)" name="imageFile" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Birthday
+                        </span>
+                        <input type="date" class="form-control" th:field="*{dateOfBirth}" required>
+                        <span class="input-group-text">Date</span>
+                      </div>
+                      <span></span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group mb-3">
+                        <span class="input-group-text">Phone number
+                        </span>
+                        <input type="text" class="form-control" th:field="*{phone}" required>
+    
+                      </div>
+                      <span>hcyrfevy cdyv </span>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="inputState" class="form-label">Status</label>
+                      <select id="inputState" class="form-select" th:field="*{status}">
+    
+                        <option value="0">Post Activity</option>
+                        <option value="1"> Newly Created</option>
+                        <option value="2"> Stop working</option>
+                        <option value="3"> VIP guests</option>
+                        
+                      </select>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{gender}" value="Male" id="male">
+                        <label class="form-check-label" for="male">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{gender}" value="Female" id="female">
+                        <label class="form-check-label" for="female">Female</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" th:field="*{gender}" value="Different" id="different">
+                        <label class="form-check-label" for="different">Different</label>
+                      </div>
+                    </div>
+                    
+             <div class="card-footer text-muted ">
+              <th:block th:if="${isNewCustomer}">
+    <button type="submit" class="btn btn-success">Create</button>
+</th:block>
+<th:block th:unless="${isNewCustomer}">
+    <button type="submit" class="btn btn-danger">Update</button>
+    <button type="submit" class="btn btn-warning" th:formaction="@{/admin/customers/delete}">Delete</button>
+    <button type="submit" class="btn btn-info" th:formaction="@{/admin/customers/add}" th:formmethod="get" >Reset</button>
+</th:block>
+              
+                 </div>
+
+
+                    
+             
+                  
+                </form><!-- End Multi Columns Form -->
+              </div>
+    
+    
+            </div>
+          </div>
+        </div>
+        </div><!-- End Default Tabs -->
+        </div>
+        </div>
+      </main><!-- End #main -->
+
+    
+</body>
+</html>

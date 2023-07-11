@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{site/HomeLayout.html}">
+   
+
+<head>
+
+ 
+</head>
+
+<body>
+   <main layout:fragment="content">
+    
+    <!-- product 2 end -->
+
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-img">
+             <img th:src="${'/product/images/' + product.image}" width="100%" id="MainImg" />        
+             <div class="smail-img-gruop">
+            <div class="smail-img-col">
+              <img src="images/product/SANPHAM2.jpeg" width="100%" class="smail-img">
+  
+            </div>
+            <div class="smail-img-col">
+              <img src="images/product/SANPHAM3.jpeg" width="100%" class="smail-img">
+  
+            </div>
+            <div class="smail-img-col">
+              <img src="images/product/SANPHAM4.jpeg" width="100%" class="smail-img">
+  
+            </div>
+            <div class="smail-img-col">
+              <img src="images/product/SANPHAM6.jpeg" width="100%" class="smail-img">
+  
+            </div>
+  
+          </div>
+        </div>
+        <div class="single-pro-details">
+        <div style="display: flex;">
+                  <h6>Home /</h6> <h6 th:text="${product.Category.name}"></h6>
+        
+        </div>
+          <h4 th:if="${product != null}" th:text="${product.name}"></h4>
+          <div class="title-name" style="display:flex;">
+            <h4 th:text="${#numbers.formatDecimal(product.untiPrice, 0, 'COMMA', 1, 'POINT')}"> </h4> <h5>đ</h5>
+          </div>
+          <select name="" id="">
+            <option value="M">Size: M</option>
+            <option value="L">Size: L</option>
+            <option value="X">Size: X</option>
+            <option value="XL">Size: XL</option>
+            <option value="XX">Size: XLL</option>
+          </select>
+          <input type="number" value="1">
+          <button class="normal">Add To Cart</button>
+          <h4 style="padding-top: 10px;">Thông tin áo thun</h4>
+          <p th:text="${product.description}">
+            </p>
+  
+        </div>
+      </section>
+      <script>
+        var MainImg =document.getElementById("MainImg");
+        var smailimg=document.getElementsByClassName('smail-img');
+          
+        smailimg[0].onclick=function(){
+          MainImg.src=smailimg[0].src;
+          
+        }
+        smailimg[1].onclick=function(){
+          MainImg.src=smailimg[1].src;
+          
+        }
+        smailimg[2].onclick=function(){
+          MainImg.src=smailimg[2].src;
+          
+        }
+        smailimg[3].onclick=function(){
+          MainImg.src=smailimg[3].src;
+          
+        }
+      
+      
+      </script>
+
+
+   
+
+    
+      <section id="product1" class="section-p1">
+        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;">
+            CÁC SẢN PHẨM KHÁC
+        </h2>
+      
+    
+        <div class=" pro-container">
+ 
+    
+          <div class="pro"  th:each="item, iterStat : ${products}" th:if="${iterStat.count} &lt;= 4">
+        <img th:src="${'/product/images/' + item.image}" />        
+            <div class="des">
+              <span>adidas</span>
+               <h5 th:text="${item.name}"></h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div style="display:flex;">
+                            <h4 th:text="${#numbers.formatDecimal(item.untiPrice, 0, 'COMMA', 1, 'POINT')}"> </h4> <h5>đ</h5>
+
+              </div>
+            </div>
+            <a th:href="@{'user/shopping/'+${item.productId}}"> <i class="fa fa-cart-shopping cart"></i> </a>
+          </div>
+          </div>
+    
+      </section>
+    
+   </main>
+
+
+    
+</body>
+</html>

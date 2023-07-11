@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{site/shopping/Wait-for-confirmation.html}">
+
+
+<head>
+
+
+</head>
+
+<body>
+
+    <section layout:fragment="item">
+        <div class="container">
+            <div class="tab-content">
+              <div class="content-Order tab-pane fade active show" id="cho-thanh-toan">
+                <div class="KrPQEI">
+                  <div class="EQko8g">
+                    <div class="qP6Mvo">
+                      <a href="/user/purchase/order/128661676232113?type=3">
+                        <i class="fa fa-truck"></i>
+                        <span>Đơn Đã được xác nhận</span>
+                        <i class="fa-sharp fa-solid fa-question"></i>
+                      </a>
+      
+      
+                    </div>
+                    <div class="Vw7Xs">ĐANG VẪN CHUYỂN</div>
+                  </div>
+                </div>
+                <!-- ------------------------------------------------------------ -------------------  -->
+         <div th:each="order : ${orders}">
+          <div style="padding-top: 10px; color: #ee4d2d; display: flex;">
+              <div style="display: flex;">
+                  <h5>#000</h5>
+                  <h5 th:text="${order.orderId}"></h5>
+              </div>
+              <h6 style="padding-top: 5px; padding-left: 20px; color: #26aa99;" th:text="${order.orderDate}"> MP 12: 20/06/2023</h6>
+          </div>
+      <div class="item-Oder" th:each="detail : ${order.orderDetails}">
+          <div class="img-oder">
+              <img  th:src="${'/home/images/' + detail.product.image}" alt="">
+          </div>
+          <div class="content-item">
+              <div class="title-oder">
+                  <span th:text="${detail.product.name}" ></span>
+              </div>
+              <div style="display: flex;">
+                  <h6>Phân loại hàng:</h6>
+                  <h6 th:text="${detail.product.category.name}"></h6>
+              </div>
+              <div>
+                  X1
+              </div>
+          </div>
+      </div>
+      
+          <div class="total-oder">
+              <div style="margin: 0 10px 0 0;">Thành tiền:</div>
+              <div style="color: #ee4d2d; font-size: 24px; line-height: 30px;"
+                   th:text="${#numbers.formatDecimal(order.amount, 0, 'COMMA', 1, 'POINT')}">₫59.046</div>
+              <h4>đ</h4>
+          </div>
+      
+         
+                <div class="button-oder">
+                  <button type="button" class="btn4" style="background-color: rgb(196, 201, 205);">Chờ</button>
+                  <button type="button" class="btn4 btn-danger">Hủy Đơn Hàng</button>
+                  <button type="button" onclick="window.location.href='/site/contact.html'" class="btn4 btn-light">Liên Hệ
+                    Người Bán</button>
+      
+      
+                </div>
+      
+      
+              </div>
+      
+            </div>
+            </div>
+          </div>      
+    </section>
+
+
+</body>
+
+</html>

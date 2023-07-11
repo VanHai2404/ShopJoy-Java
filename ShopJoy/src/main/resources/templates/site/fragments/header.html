@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultrap.net.nz/thymeleaf/layout">
+
+<head>
+</head>
+
+<body>
+
+    <header id="header"  th:fragment="header">
+        <!-- Navbar -->
+        <a  th:href="@{home}" > <img src="images/logo.png" alt="" class="logo"></a>
+        <!-- Navbar -->
+        <div>
+          <ul id="navbar">
+            <li><a th:href="@{home}" style="font-size: 16px;
+                font-weight: 600;">Home</a></li>
+            <li><a th:href="@{product}">Shop</a></li>
+            <li><a th:href="@{blog}">Blog</a></li>
+            <li><a th:href="@{about}">About</a></li>
+            <li><a th:href="@{contact}">Contact</a></li>
+            <a href="#" id="close"><i class="fa fa-times"></i></a>
+            <form class="d-flex input-group w-auto"  th:action="@{/product}">
+              <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                aria-describedby="search-addon" th:value="${search}"  style="height: 40px"/>
+              <span class="input-group-text border-0" id="search-addon">
+                
+                 <button type="submit" class="btn" style="height: 20px; display: flex; align-items: center;">
+                               <i class="fas fa-search"></i>
+                         </button>
+              </span>
+            </form>
+    
+            <li id="cart-shopping"><i class="fa fa-cart-shopping"></i><span class="badge rounded-pill badge-notification bg-danger pt-2" th:text="${session.No0fItems != null ? session.No0fItems : '0'}"></span></li>
+            <li class="nav-item dropdown">
+    
+              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <i class="fa-solid fa-user"></i>
+                <!-- <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> -->
+              </a><!-- End Profile Iamge Icon -->
+    
+    
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li class="dropdown-header" style="text-align: center;">
+                  <h6 th:text="${session.fullname}"></h6>
+                 
+                </li>
+                <li th:if="${session.name != null}" >
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li th:if="${session.name != null}" >
+                  <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                    <i class="fa fa-person"></i>
+                    <span>My Profile</span>
+                  </a>
+                </li>
+                <li th:if="${session.name != null}">
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li  th:if="${session.name == null}" >
+                  <a class="dropdown-item d-flex align-items-center" th:href="@{ulogin}">
+                      <i class="fa fa-arrow-right-to-bracket"></i>
+                    <span>Login</span>
+                  </a>
+                </li>
+                <li th:if="${session.name == null}">
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li th:if="${session.name == null}" >
+                  <a class="dropdown-item d-flex align-items-center" th:href="@{regisret}">
+                    <i class="fa fa-gear"></i>
+                    <span>Regisret ?</span>
+                  </a>
+                </li>
+               
+                <li th:if="${session.name != null}"  >
+                  <a class="dropdown-item d-flex align-items-center" th:href="@{user/purchase/0}">
+                    <i class="fa fa-question-circle"></i>
+                    <span> My order</span>
+                  </a>
+                </li>
+                <li th:if="${session.name != null}">
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li th:if="${session.name != null}">
+                  <a class="dropdown-item d-flex align-items-center" th:href="@{out}">
+                    <i class="fa fa-box-arrow-right"></i>
+                    <span>Sign Out</span>
+                  </a>
+                </li>
+    
+              </ul><!-- End Profile Dropdown Items -->
+            </li>
+    
+            <div id="shopping" class="shopping">
+              <div class="aside__content">
+                <div class="aside__content__title">
+                  <div> GIỎ HÀNG CỦA BẠN
+                     <span style="font-size: 0.875rem; font-weight: 500;">
+        (<span  th:text="${session.No0fItems != null ? session.No0fItems : '0'}" ></span> sản phẩm)
+              </span>    
+                  </div>
+                  <button id="close1" class="btn-close js-close-btn"></button>
+                </div>
+                <div class="aside__content__sub">
+                  <img src="https://lunacy.vn/1428355432291766272/d/images/truck-white.svg" alt="" style="font-size: 10px;">
+                  <div> Miễn Phí giao hàng <span>cho đơn hàng trên 500.000đ</span></div>
+                </div>
+                <div class="aside__content__body"><!---->
+                 <div class="aside__content__cart" th:unless="${session.cartItems != null and !session.cartItems.isEmpty()}"  >
+                    <div class="empty-cart">
+                      <div class="empty-cart__icon"><img
+                          src="https://lunacy.vn/1428355432291766272/d/images/empty-cart.svg" alt="">
+                      </div>
+                      <p class="empty-cart__title">Giỏ hàng của bạn đang trống</p>
+                    </div>
+                  </div>   
+                 <div class="aside__content__cart" th:if="${session.cartItems != null and !session.cartItems.isEmpty()}" style="height: 31rem !important;">
+                    <div class="card mb-3 border-0" th:each="product, iterStat :${session.cartItems}">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                          <div class="d-flex flex-row align-items-center">
+                            <div>
+                              <img
+                                th:src="${'/home/images/' + product.image}"  alt="Shopping item" style="width: 80px; height: 100px;">
+                            </div>
+                            <div class="ms-3">
+                              <h6 th:text="${product.name}"></h6>
+                                  <div style="display:flex;">
+                                    <p class="mb-0" th:text="${#numbers.formatDecimal(product.untiPrice, 0, 'COMMA', 1, 'POINT')}" style="font-size: 14px; margin: 0;"></p>
+                                    <p style="font-size: 14px; margin: 0;">đ</p>
+                        </div>
+                                
+                                   <select class="form-select form-select-sm" aria-label=".form-select-sm example" style="width: 68px;" th:name="size">
+										<option value="M" th:selected="${product.size == 'M'}">M</option>
+									    <option value="L" th:selected="${product.size == 'S'}">S</option>
+										<option value="L" th:selected="${product.size == 'L'}">L</option>
+										<option value="X" th:selected="${product.size == 'X'}">X</option>
+							         	<option value="XL" th:selected="${product.size == 'XL'}">XL</option>
+								</select>
+                                
+                                
+                            </div>
+                          </div>
+                          <div class="d-flex flex-row align-items-center">
+                            <div style="width: 65px; padding: 10px;" >
+                        
+                            <form action="/shopping/update" method="post">
+                                 <input type="hidden" name="productId" th:value="${product.productId }">
+                                  <input id="form1" min="0" th:value="${product.quantity }" name="quantity" onblur="this.form.submit()"  value="1" type="number" class="form-control form-control-sm" />
+                            </form>
+    
+                            </div>
+                          
+                            <a th:href="@{'shopping/remove/'+${product.productId}}" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                
+    
+                  </div> 
+    
+                  <div class="aside__content__total">
+                    <div class="aside__content__total__top">
+                      <div class="aside__content__total__title">Tổng thanh toán</div>
+                      <div class="aside__content__total__price">
+                       <div style="display:flex;">
+                           <h6 class="mb-0" th:text="${#numbers.formatDecimal(session.tolat, 0, 'COMMA', 1, 'POINT')}"></h6>
+                            <h6>đ</h6>
+                        </div>
+                      
+                       </div>
+                    </div>
+                    <div class="aside__content__total__bottom"><a th:href="@{shopping/cart}"
+                        class="aside__content__total__btn btn btn-primary"> THANH TOÁN <i class="fa-solid fa-arrow-right"
+                          style="padding-left: 10px;"></i></a>
+                    </div>
+                  </div>
+                </div><!----><!---->
+              </div>
+    
+    
+    
+    
+            </div><!-- End Profile Dropdown Items -->
+    
+    
+    
+    
+    
+        </div>
+        <div id="mobile">
+    
+          <i class="fa fa-cart-shopping"></i>
+          <i class="fa-solid fa-user"></i>
+          <i id="bar" class="fas fa-outdent"></i>
+    
+        </div>
+      </header>
+    
+</body>
+</html>

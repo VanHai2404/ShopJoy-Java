@@ -27,14 +27,25 @@ public class Shipping {
 	private int shippingId;
 //	@Column(nullable = false)
 //	private int orderId;
+	@Column(columnDefinition = "nvarchar(200)")
+	private  String fullname;
+	
 	@Column(columnDefinition = "nvarchar(200) not null")
 	private  String address;
+	
 	@Column(columnDefinition = "nvarchar(200) not null")
 	private String City;
+	
 	@Column(nullable = false)
 	private short status;
+	
 	@Column(columnDefinition = "nvarchar(200) not null")
 	private String Country;
+	
+	private String phone;
+	
+	@Column(columnDefinition = "nvarchar(200)")
+	private  String Shipping_Modes;
 	
 	@OneToOne
 	@JoinColumn(name = "orderId")

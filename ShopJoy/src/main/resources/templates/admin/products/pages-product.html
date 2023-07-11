@@ -1,52 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" 
-   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{admin/dashboardLayout.html}">
-   
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/dashboardLayout.html}">
+
 
 <head>
 
- <base href="/">
+<base href="/">
 </head>
 
 <body>
-    <!-- #main -->
+	<!-- #main -->
 
-    <main id="main" class="main" layout:fragment="content">
+	<main id="main" class="main" layout:fragment="content">
 
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Product Edit</h5>
-      
-              <!-- Default Tabs -->
-          
-        
-                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div th:if="${message != null}" class="alert alert-primary text-center">
-                    <i>[[${message}]]</i>
-                    </div>
-                  <!-- Multi Columns Form -->
-                  <form action="/admin/products/saveOrUpdate"  method="post" enctype="multipart/form-data" th:object="${product}" class="row g-3 needs-validation" novalidate>
-                    <div class="row g-3">
-                      <div class="col-md-6">
-                        <div class="col pt-4">
-                          <label for="inputEmail5" class="form-label">Product ID</label>
-                          <input type="email" class="form-control" id="inputEmail5" th:field="*{productId}" readonly >
-                        
-                        </div>
-                        <div class="col pt-4">
-                          <label for="inputEmail5" class="form-label">Name</label>
-                          <input type="text" class="form-control" id="inputEmail5"  th:field="*{name}" required>
-                          <div class="invalid-feedback">Tên sản phẩm không đc bỏ trống</div>
-                        </div>
-                        <div class="col pt-4">
-                          <label for="inputEmail5" class="form-label">Quantity</label>
-                          <input type="number" class="form-control" id="inputEmail5" th:field="*{quantity}" required>
-                          <div class="invalid-feedback">Số lượng không đc bỏ trống</div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div  class="pr">
-                        <script >
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Product Edit</h5>
+
+				<!-- Default Tabs -->
+
+
+				<div class="tab-pane fade show active" id="home" role="tabpanel"
+					aria-labelledby="home-tab">
+					<div class="row">
+						<div class="col-11"></div>
+						<div class="col-1">
+							<a th:href="@{/admin/products/page}"
+								style="text-decoration: none; color: black;"> <i
+								class="fa-solid fa-list" style="font-size: 35px;"></i>
+							</a>
+						</div>
+
+
+					</div>
+					<div th:if="${message != null}"
+						class="alert alert-primary text-center">
+						<i>[[${message}]]</i>
+					</div>
+					<!-- Multi Columns Form -->
+					<form action="/admin/products/saveOrUpdate" method="post"
+						enctype="multipart/form-data" th:object="${product}"
+						class="row g-3 needs-validation" novalidate>
+						<div class="row g-3">
+							<div class="col-md-6">
+								<div class="col pt-4">
+									<label for="inputEmail5" class="form-label">Product ID</label>
+									<input type="email" class="form-control" id="inputEmail5"
+										th:field="*{productId}" readonly>
+
+								</div>
+								<div class="col pt-4">
+									<label for="inputEmail5" class="form-label">Name</label> <input
+										type="text" class="form-control" id="inputEmail5"
+										th:field="*{name}" required>
+									<div class="invalid-feedback">Tên sản phẩm không đc bỏ
+										trống</div>
+								</div>
+								<div class="col pt-4">
+									<label for="inputEmail5" class="form-label">Quantity</label> <input
+										type="number" class="form-control" id="inputEmail5"
+										th:field="*{quantity}" required>
+									<div class="invalid-feedback">Số lượng không đc bỏ trống</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="pr">
+									<script>
                         function chooseFile(input) {
                         	  if (input.files && input.files[0]) {
                         	    var reader = new FileReader();
@@ -59,63 +79,95 @@
                         	  }
                         	}
                         </script>
-                          <img id="image" th:src="${product.image !=null ? '/admin/products/images/' + product.image :'images/noimage.jpg'}"  alt="" height="250px" width="200px">
-                        </div>
-                        <label for="inputEmail5" class="form-label">lmage File</label> <br>
-                         <input type="file" onchange="chooseFile(this)" name="imageFile" required>
-      
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="input-group mb-3">
-                        <span class="input-group-text">Unit Price</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"
-                          placeholder="Unit Price"  th:field="*{untiPrice}" required>
-                        <span class="input-group-text">.VND</span>
-                        <div class="invalid-feedback">Unit Price Not Null</div>
-                      </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="input-group mb-3">
-                        <span class="input-group-text">Discoun</span>
-                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  th:field="*{discount}" required>
-                        <span class="input-group-text">.$</span>
-                        <div class="invalid-feedback">Discoun Not Null</div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputState" class="form-label">Category</label>
-                      <select id="inputState" class="form-select"  th:field="*{categoryId}" >                      
-                        <option th:each="item : ${categories}" th:value="${item.categoryId}" th:text="${item.name}" th:selected="${item.categoryId == product.categoryId}"> Category Name</option>
-                      </select>
-                    </div>
-                    <div class="col-md-4">
-                      <label for="inputState" class="form-label">Status</label>
-                      <select id="inputState" class="form-select"  th:field="*{status}">
-                        
-                        <option value="0">On of Stock</option>
-                        <option value="1"> On sale</option>
-                        <option value="2"> Featured</option>
-                        <option value="3"> Bestseller</option>
-                        <option value="4">Out of Order</option>
-                      </select>
-                    </div>
-                    <div class="col-12">
-                      <div class="form-floating mb-3">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"
-                          style="height: 100px;"   th:field="*{description}" ></textarea>
-                        <label for="floatingTextarea">Descriotion</label>
-                      </div>
-                    </div>
-                
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save</button>
-                      <button type="submit" class="btn btn-primary">Update</button>
-                      <button type="submit" class="btn btn-primary">Delete</button>
-                      <button type="reset" class="btn btn-secondary">Reset</button>
-                    </div>
-                  </form><!-- End Multi Columns Form -->
-                  <script>
+									<img id="image"
+										th:src="${product.image !=null ? '/admin/products/images/' + product.image :'images/noimage.jpg'}"
+										alt="" height="250px" width="200px">
+								</div>
+								<label for="inputEmail5" class="form-label">lmage File</label> <br>
+								<input type="file" onchange="chooseFile(this)" name="imageFile"
+									>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="input-group mb-3">
+								<span class="input-group-text">Unit Price</span> <input
+									type="text" class="form-control"
+									aria-label="Amount (to the nearest dollar)"
+									placeholder="Unit Price" th:field="*{untiPrice}" required>
+								<span class="input-group-text">.VND</span>
+								<div class="invalid-feedback">Unit Price Not Null</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="input-group mb-3">
+								<span class="input-group-text">Discoun</span> <input type="text"
+									class="form-control"
+									aria-label="Amount (to the nearest dollar)"
+									th:field="*{discount}" required> <span
+									class="input-group-text">.$</span>
+								<div class="invalid-feedback">Discoun Not Null</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label for="inputState" class="form-label">Category</label> <select
+								id="inputState" class="form-select" th:field="*{categoryId}">
+								<option th:each="item : ${categories}"
+									th:value="${item.categoryId}" th:text="${item.name}"
+									th:selected="${item.categoryId == product.categoryId}">
+									Category Name</option>
+							</select>
+						</div>
+						<div class="col-md-4">
+							<label for="inputState" class="form-label">Status</label> <select
+								id="inputState" class="form-select" th:field="*{status}">
+
+								<option value="0">On of Stock</option>
+								<option value="1">On sale</option>
+								<option value="2">Featured</option>
+								<option value="3">Bestseller</option>
+								<option value="4">Out of Order</option>
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label for="inputState" class="form-label">Size</label> <select
+								id="inputState" class="form-select" th:field="*{size}">
+                               <option value="ALL">ALL</option>
+								<option value="M">M</option>
+								<option value="L">L</option>
+								<option value="X">X</option>
+								<option value="XL">XL</option>
+								<option value="XX">XX</option>
+							</select>
+						</div>
+						<div class="col-12">
+							<div class="form-floating mb-3">
+								<textarea class="form-control"
+									placeholder="Leave a comment here" id="floatingTextarea"
+									style="height: 100px;" th:field="*{description}"></textarea>
+								<label for="floatingTextarea">Descriotion</label>
+							</div>
+						</div>
+
+		
+
+						<div class="card-footer text-muted ">
+							<th:block th:if="${isNewCustomer}">
+								<button type="submit" class="btn btn-success">Create</button>
+							</th:block>
+							<th:block th:unless="${isNewCustomer}">
+								<button type="submit" class="btn btn-danger">Update</button>
+								<button type="submit" class="btn btn-warning"
+									th:formaction="@{/admin/products/delete}">Delete</button>
+								<button type="submit" class="btn btn-info"
+									th:formaction="@{/admin/products/add}" th:formmethod="get">Reset</button>
+							</th:block>
+
+						</div>
+
+					</form>
+					<!-- End Multi Columns Form -->
+					<script>
                     // Example starter JavaScript for disabling form submissions if there are invalid fields
                     (() => {
                       'use strict';
@@ -135,20 +187,21 @@
                       });
                     })();
                   </script>
-                </div>
-      
-  
-            </div>
-          </div>
-       
-      
-      
-    
-    
-    
-      </main><!-- End #main -->
+				</div>
 
 
-    
+			</div>
+		</div>
+
+
+
+
+
+
+	</main>
+	<!-- End #main -->
+
+
+
 </body>
 </html>

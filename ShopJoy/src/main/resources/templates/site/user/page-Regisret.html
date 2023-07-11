@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<!-- Template Main CSS File -->
+<link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}" rel="stylesheet" />
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+
+
+
+    <title>REGISRET PAGE </title>
+  </head>
+<body id="login">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-7">
+                <h1 class="text-center" style="padding-top: 300px;">Tạo tài khoản</h1>
+                
+
+            </div>
+            <div class="col-lg-5 pt-5">
+             <div th:if="${message != null}" class="alert alert-primary text-center">
+                  <i>[[${message}]]</i>
+                </div>
+                <div th:if="${error != null}" class="alert alert-danger text-center">
+                  <i>[[${error}]]</i>
+                </div>
+                <form th:action="@{/regisret}" method="post" th:object="${customer}" class="needs-validation" novalidate>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form2Example18" class="form-control form-control-lg" placeholder="username" th:field="*{username}"  required/>
+                        <div class="invalid-feedback">username không được bỏ trống !</div>
+                        
+                      </div>
+          
+                      <div class="form-outline mb-4">
+                        <input type="text" id="form2Example28" class="form-control form-control-lg" placeholder="Họ Và tên" th:field="*{fullname}" required />
+                        <div class="invalid-feedback">username không được bỏ trống !</div>
+                      </div>
+                      <div class="form-outline mb-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" th:field="*{gender}" value="Male" required  />
+                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                          </div>
+                          
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" th:field="*{gender}" value="Female" required/>
+                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                          </div>
+                  
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="date" id="form2Example28" class="form-control form-control-lg" placeholder="mm/dd/yyyy" th:field="*{dateOfBirth}" required/>
+                        <div class="invalid-feedback">ngày sinh không được bỏ trống !</div>
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="email" id="form2Example28" class="form-control form-control-lg" placeholder="Email"  th:field="*{email}" required/>
+                        <div class="invalid-feedback">email không được bỏ trống !</div>
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="password" id="form2Example28" class="form-control form-control-lg" placeholder="Passsword" th:field="*{password}" required />
+                        <div class="invalid-feedback">mật khẩu không được bỏ trống !</div>
+                      </div>
+                      <span >This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</span>
+ 
+                      <div class="form-outline mb-4">
+                        <button type="submit" class="btn btn-outline-secondary" data-bs-ripple-color="dark" style="height: 50px; width: 200px; font-size: 13px; font-family: 900; ">ĐĂNG KÝ</button>
+                        
+                      </div>
+                      <a th:href="@{home}" style="text-decoration: none;"><i class="fa fa-arrow-left"></i> Quay lại trang chủ</a>
+
+                </form>
+                
+            </div>
+            
+        
+        </div>
+
+    </div>
+    
+
+</body>
+
+
+<script src="/js/srcipt.js"></script>
+
+  
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js}" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"></script>
+      <script th:src="@{/js/srcipt.js}"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

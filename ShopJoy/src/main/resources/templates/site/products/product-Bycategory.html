@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" 
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{site/HomeLayout.html}">
+   
+
+<head>
+
+ 
+</head>
+
+<body>
+   <main layout:fragment="content">
+    
+    <!-- product 2 end -->
+
+   
+
+    
+      <section id="product1" class="section-p1">
+        <h2 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;" th:text="${message2}">
+        </h2>
+      
+    
+        <div class=" pro-container">
+ 
+    
+          <div class="pro" th:each="item, iterStat : ${products} ">
+        <img th:src="${'/product/images/' + item.image}" />        
+            <div class="des">
+              <span>adidas</span>
+               <h5 th:text="${item.name}"></h5>
+              <div class="star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <div style="display:flex;">
+                            <h4 th:text="${#numbers.formatDecimal(item.untiPrice, 0, 'COMMA', 1, 'POINT')}"> </h4> <h5>đ</h5>
+
+              </div>
+            </div>
+            
+               <a th:href="@{'user/shopping/'+${item.productId}}" data-bs-toggle="modal"
+               th:data-bs-target="'#modal-' + ${item.productId}" >
+                <i class="fa fa-cart-shopping cart"></i>
+            </a>
+             <div class="modal fade" th:id="'modal-' + ${item.productId}" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                        <section id="prodetails">
+                            <div class="single-pro-img">
+                                <img th:src="${'/home/images/' + item.image}" width="200px" height="230px" alt="">
+                            </div>
+                            <div class="single-pro-details" style="padding-top: 10;">
+                            <form th:action="@{shopping/add}" method="get">
+                                <h4 style="padding:5px 0 5px 0;" th:text="${item.name}"></h4>
+                                <div style="display:flex;">
+                                    <h6 th:text="${#numbers.formatDecimal(item.untiPrice, 0, 'COMMA', 1, 'POINT')}"></h6>
+                                    <h6>đ</h6>
+                                </div>
+                                
+                                <select th:name="size">
+                                    <option value="S">Size: S</option>
+                                    <option value="M">Size: M</option>
+                                    <option value="L">Size: L</option>
+                                    <option value="X">Size: X</option>
+                                    <option value="XL">Size: XL</option>
+                                    <option value="XX">Size: XX</option>
+                                </select>
+                                <input type="hidden" th:name="productId" th:value="${item.productId}">
+                                <input type="number" value="1" th:name="quantity">
+                                   <button type="submit" class="normal">Add To Cart</button>
+                             </form>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
+       
+          </div>
+          </div>
+    
+      </section>
+    
+   </main>
+
+
+    
+</body>
+</html>

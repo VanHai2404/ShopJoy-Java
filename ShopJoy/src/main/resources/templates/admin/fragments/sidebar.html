@@ -15,7 +15,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " th:href="@{admin/dashboard}">
           <i class="fa fa-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -28,12 +28,12 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a th:href="@{admin/product}">
+            <a th:href="@{admin/products/add}">
               <i class="fa fa-circle"></i><span>Edit PRODUCT</span>
             </a>
           </li>
           <li>
-            <a th:href="@{admin/product/list}">
+            <a th:href="@{admin/products/page}">
               <i class="fa fa-circle"></i><span>List PRODUCT</span>
             </a>
           </li>
@@ -42,11 +42,7 @@
               <i class="fa fa-circle"></i><span>Category</span>
             </a>
           </li>
-          <li>
-            <a href="forms-validation.html">
-              <i class="fa fa-circle"></i><span>Form Validation</span>
-            </a>
-          </li>
+          
         </ul>
       </li><!-- End Forms Nav -->
 
@@ -56,13 +52,30 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="page-cutomers.html">
+            <a th:href="@{admin/customers/add}">
               <i class="fa fa-circle"></i><span>Edit CUSTOMERS</span>
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a th:href="@{admin/customers/page}">
               <i class="fa fa-circle"></i><span>List CUSTOMERS</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+        <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav2" data-bs-toggle="collapse" href="#">
+          <i class="fa fa-layout-text-window-reverse"></i><span>ACCOUNTS</span><i class="fa fa-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a th:href="@{admin/accounts/form}">
+              <i class="fa fa-circle"></i><span>Edit Account</span>
+            </a>
+          </li>
+          <li>
+            <a th:href="@{admin/accounts/page}">
+              <i class="fa fa-circle"></i><span>List Account</span>
             </a>
           </li>
         </ul>
@@ -97,18 +110,19 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="page-bill.html">
+            <a th:href="@{admin/orders/confirmation}">
               <i class="fa fa-circle"></i><span>Orders waiting for confirmation</span>
             </a>
           </li>
+         
           <li>
-            <a href="page-bill.html">
-              <i class="fa fa-circle"></i><span>Bill</span>
+            <a th:href="@{admin/orders/shipping}">
+              <i class="fa fa-circle"></i><span>Shipping</span>
             </a>
           </li>
-          <li>
-            <a href="">
-              <i class="fa fa-circle"></i><span>Boxicons</span>
+           <li>
+            <a th:href="@{admin/orders/page}">
+              <i class="fa fa-circle"></i><span>Bill</span>
             </a>
           </li>
         </ul>
@@ -117,7 +131,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" th:href="@{admin/accounts/profile}">
           <i class="fa fa-person"></i>
           <span>Profile</span>
         </a>
@@ -133,14 +147,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-login.html">
           <i class="fa fa-box-arrow-in-right"></i>
-          <span>Login</span>
+          <span>Sing Out</span>
         </a>
       </li><!-- End Login Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-blank.html">
           <i class="fa fa-file-earmark"></i>
-          <span>Blank</span>
+          <span>Settings</span>
         </a>
       </li><!-- End Blank Page Nav -->
 
