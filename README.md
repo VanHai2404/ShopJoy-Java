@@ -11,7 +11,7 @@ The website comprises two main sections: the site and the admin panel.
 
 ### PRODUCT LIST
 
-![Product List](ShopJoy/src/main/resources/static/images/ListProduct.png)
+![Product List](ShopJoy/src/main/resources/static/images/List.png)
 
 ### LOGIN
 
